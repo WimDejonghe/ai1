@@ -4,7 +4,7 @@
   "description": "ai1",
   "main": "index.js",
   "directories": {
-    "doc": "docs"
+    "doc": "src"
   },
   "authors": {
     "name": "Wim",
