@@ -11,7 +11,7 @@
   "scripts": {
     "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "dev": "vuepress dev src",
-    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start && vuepress build src"
+    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start"
     
   },
   "license": "MIT",
