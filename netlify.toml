@@ -1,3 +1,6 @@
+[build.environment]
+ NODE_OPTIONS="--openssl-legacy-provider"
+
 [build]
 
   # Directory to change to before starting a build. 
@@ -10,5 +13,4 @@
   publish = "/src/.vuepress/dist"
 
   # Default build command.
-  SET NODE_OPTIONS="--openssl-legacy-provider"
   command = "npm run build"
