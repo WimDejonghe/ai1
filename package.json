@@ -9,10 +9,10 @@
   },
   "repository": "https://github.com/WimDejonghe/ai1.git/ai1",
   "scripts": {
-    
+    "start": "react-scripts start --openssl-legacy-provider",
     "dev": "vuepress dev src",
-    "build": "vuepress build src",
-    "start": "react-scripts start --openssl-legacy-provider"
+    "build": "vuepress build src"
+    
   },
   "license": "MIT",
   "devDependencies": {
