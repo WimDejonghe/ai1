@@ -13,12 +13,12 @@
   "repository": "https://github.com/WimDejonghe/ai1",
   "scripts": {
     
-    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress dev docs",
+    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress dev src",
     "build": "vuepress build src"
     
     
   },
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
     "vuepress": "^0.14.11"
   }
