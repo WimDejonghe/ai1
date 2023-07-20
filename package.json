@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "description": "ai1",
   "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "authors": {
     "name": "Wim",
     "email": "wim.dejonghe@vives.be"
   },
-  "repository": "https://github.com/WimDejonghe/ai1.git",
+  "repository": "https://github.com/WimDejonghe/ai1",
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
     
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "vuepress dev src",
+    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress dev docs",
     "build": "vuepress build src"
     
     
