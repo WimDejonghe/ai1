@@ -9,9 +9,10 @@
   },
   "repository": "https://github.com/WimDejonghe/ai1.git",
   "scripts": {
-    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
-   "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
-   "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "dev": "vuepress dev src"
     
     
