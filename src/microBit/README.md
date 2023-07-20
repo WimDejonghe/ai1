@@ -1,11 +1,3 @@
----
-author: [Wim Dejonghe]
-description: [Korte introductie tot Micro:Bit met MicroPython.]
-ms.date: [CREATION/UPDATE DATE - mm/dd/yyyy]
-marp: true
-title: [MicroBit MicroPython]
----
-
 # Micro:Bit
 
 ![example image](./images/bbc-microbit-microbit-v22.png "An exemplary image")
