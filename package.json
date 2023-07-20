@@ -13,7 +13,7 @@
   "repository": "https://github.com/WimDejonghe/ai1",
   "scripts": {
     
-    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress dev src",
+    "dev": "vuepress dev src",
     "build": "vuepress build src"
     
     
