@@ -10,4 +10,5 @@
   publish = "/src/.vuepress/dist"
 
   # Default build command.
-  command = "--openssl-legacy-provider && npm run build"
+  NODE_OPTIONS="--openssl-legacy-provider"
+  command = "npm run build"
