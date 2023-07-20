@@ -1,0 +1,19 @@
+{
+  "name": "ai1",
+  "version": "0.0.1",
+  "description": "ai1",
+  "main": "index.js",
+  "authors": {
+    "name": "Wim",
+    "email": "wim.dejonghe@vives.be"
+  },
+  "repository": "https://github.com/WimDejonghe/ai1.git/ai1",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^0.14.11"
+  }
+}
