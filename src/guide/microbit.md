@@ -637,7 +637,7 @@ while True:
 
 ![example image](./images/ax.png "Acceleratie sensor")
 
-De Micro:Bit bezit een acceleratie-sensor die op de in de drie dimensies een versnelling kan waarnemen. Schudden is een actie die in de drie dimensies een versnelling kan veroorzaken. De Micro:Bit kan dit waarnemen en dit als voorwaarde worden gebruikt om een handeling uit te voeren. Is vergelijkbaar met een event op een knop maar nu niet drukken maar bij schudden.
+De Micro:Bit bezit een acceleratie-sensor die in de drie dimensies een versnelling kan waarnemen. Schudden is een actie die in de drie dimensies een versnelling kan veroorzaken. De Micro:Bit kan dit waarnemen en dit als voorwaarde worden gebruikt om een handeling uit te voeren. Is vergelijkbaar met een event op een knop maar nu niet drukken maar bij schudden.
 
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht : laat de Micro:Bit een random getal genereren (0-100) bij het schudden van de Micro:Bit en geef dit getal weer op het LED-display.
@@ -645,7 +645,234 @@ De Micro:Bit bezit een acceleratie-sensor die op de in de drie dimensies een ver
 </div>
 
 
- 
+```python
+from microbit import *
+import random
+while True:
+  if accelerometer.was_gesture('shake'):
+    display.show(random.randint(1,100))    
+```
+
+### Schudden : Lovemeter
+
+Idem als vorige opdracht maar nu interpreteren we de random waarde naar een symbool.
+
+•	Getal tussen 0-30 : display.show(Image.SAD)
+•	Getal tussen 30-60 : display.show(Image.SMILE)
+•	Getal tussen 60-100 : display.show(Image.HAPPY)
+
+```python
+from microbit import *
+import random
+while True:
+  if accelerometer.was_gesture('shake'):
+    waarde = random.randint(1,100)
+    if waarde < 30 :
+      display.show(Image.SAD)
+    elif waarde < 60 :
+      display.show(Image.SMILE)
+    else:
+      display.show(Image.HAPPY)
+```
+
+## Analyse sensoren
+
+Op de Micro:Bit zitten al een aantal sensoren die in python kunnen worden uitgelezen. Onboard:
+•	Gyro sensor : 3-dimensionele versnelling (g-force)
+•	Magnetisme : 3-dimensionele magnetische veldsterkte  (µ-tesla)
+•	Geluidsensor
+•	Temperatuursensor
+•	Lichtsensor
+•	Voel-sensoren (drukknoppen, en touch sensor, externe: pinnen)
+Om een analyse (studie) te maken over de werking en verwerking van data binnen de Micro:Bit kunnen we gebruik maken van het print() python statement. De Micro:Bit kan zeker uitgebreid worden met externe sensoren door die juist aan te sluiten op de beschikbare pinnen.
+Analyse van lichtsensor:
+
+```python
+from microbit import *
+while True:
+  tekst = 'De hoeveelheid licht = ' + str(display.read_light_level())
+  print(tekst)
+  sleep(500)
+```
+
+Met het print commando stuur je data van de Micro:Bit naar de computer. Op de computer kan via het venster Show Serial.
+In de code zie je ook een type casting (convertie/omzetting) van een integer waarde naar een string :
+str(integer).
+Je ziet ook een concatenatie van twee strings.
+
+![example image](./images/term.png "Afdruk lichtsensorwaarde")
+
+### Automatische verlichting
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht : Zorg dat de LED matrix in drie helderheden wordt aangestuurd afhankelijk van het invallend licht. Analogie met de automatische verlichting bij een wagen die een tunnel binnen komt. Wanneer geen lichten? Wanneer kleine lichten? Wanneer grote lichten? Bepaal eerst aan de hand van uw testen de twee grenswaarden voor de lichtsensor.
+</p>
+</div>
+
+```python
+# Imports go at the top
+from microbit import *
+# Code in a 'while True:' loop repeats forever
+while True:
+     if (display.read_light_level() < 100):
+         display.show(Image('30903:'
+                            '06960:'
+                            '99999:'
+                            '06960:'
+                            '30903'))
+         
+     elif (display.read_light_level() < 150):
+         display.show(Image('00300:'
+                            '03630:'
+                            '36963:'
+                            '03630:'
+                            '00300'))
+         
+     else:
+         display.clear()
+         
+    
+```
+
+::: tip
+**Uitbreiding:**
+Je kan gerust meerdere niveaus gebruiken met meerdere helderheden.
+:::
+
+### Geluidsensor
+
+Gelijkaardig kan je een analyse doen met de geluidsensor. Doe dit eerst door de waarde van het geluid te PRINTEN naar de Serial console. Bepaal hiermee welke waarden vertegenwoordigen stil/luid? Wat is stil? Wat is luid? Bepaal een grenswaarde en schrijf dan code om een alarm te maken wanneer er teveel lawaai is in de klas.
+Meet het geluid in Python met het statement : 
+
+```python
+microphone.sound_level()
+```
+
+### Temperatuursensor
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Meet de temperatuur in de klas en display de temperatuur op de LEDS als getal of als figuur of met pixels. Print ook die waarde eens realtime naar de Serial Console.
+</p>
+</div>
+
+Lees de temperatuur in Python met:  
+
+```python
+temperature()
+```
+
+### Accelerosensor
+
+Opnieuw gelijkaardig kan de accelerosensor worden geanalyseerd. Echter bezit de accelerosensor niet één enkele meetwaarde maar drie meetwaarden volgens de versnelling in de drie dimensies (X, Y en Z as).
+
+```python
+accelerometer.get_x()
+```
+
+Bepaal zelf via printen naar de Serial console wat X, Y en Z is. De versnelling wordt uitgedrukt in milli-G-kracht (versnelling 1G = 9,81m/s²). Op die manier kan zwaartekracht berekend worden uit massa en versnelling F=m.a (vb m=80kg en a=9,81m/s² => F=78,48N). 
+
+Bepaal zelf wat en waar is in de x-richting de versnelling = 1000mG, waar en hoe 0, waar en hoe max positief, max negatief?
+Idem voor de y-richting en de z-richting?
+
+### Magnetischesensor
+
+Met de Micro:Bit kan ook een magnetisch veld worden gemeten. Opnieuw kan dit in de 3-dimensionele ruimte adhv de 3 assen (X, Y en Z). Hiermee kan een kompas worden gemaakt die volgens een as van de micro:bit (meestal X) het aardmagnetisme kan meten. Maar het kan ook magnetische velden van losse magneten meten en bepalen waar zich een NOORD of een ZUIDPOOL ligt. 
+Echter is het wel zo dat wanneer je deze sensor wenst te gebruiken de Micro:Bit een kalibratie procedure zal vragen die moet uitgevoerd worden op de Micro:Bit vooraleer deze kan worden gebruikt.
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Experimenteer met deze sensor door gebruik te maken van het Python commando : compass.get_x()
+</p>
+</div>
+
+Stuur opnieuw waarden naar de Serial console na de kalibratie procedure gevolgd te hebben (zie instructies op de Micro:Bit zelf).
+
+## Datalogging
+
+Nu we wat ervaring hebben met de verschillende sensoren willen we veelal waarden van die sensoren gaan loggen (data wegschrijven op de Micro:Bit zelf en die bijhouden) gedurende een bepaalde tijd of een bepaalde omstandigheid om er dan nadien een analyse op uit te voeren eventueel met Excel. 
+We wensen dus bijvoorbeeld de lichtsterkte (zonlicht) te monitoren gedurende een volledige dag en dit door iedere minuut een lichtmeting uit te voeren. 
+Dit kan met de Micro:Bit in Python als volgt gebeuren.
+
+```python
+# Imports go at the top
+from microbit import *
+import log
+
+log.set_labels('light')
+
+@run_every(s=1)
+def log_data():
+    my_effect = audio.SoundEffect(duration=10)
+    audio.play(my_effect)
+    log.add({'light': display.read_light_level()})
+
+while True:
+    sleep(100000)
+```
+
+**Uitleg code**: 
+•	Vooreerst zie je dat een extra import moet uitvoeren van log
+•	Daarna moet 1 keer log.set_labels() worden uitgevoerd die aangeeft wat de hoofding (gewoon tekst) van die reeks getallen zal inhouden. Stel dat je meerdere verschillende waarden wil loggen op het zelfde moment, dan kunnen die waarden gescheiden worden van elkaar door ze in aparte kolommen op te nemen en de kolom te voorzien van een hoofding (titel). Dit kan achteraf eenvoudig in Excel worden gelezen.
+•	We zien dat er in de code een oneindige lus (While True:) is opgenomen maar dat we daar niets in doen. We laten daar de Micro:Bit slapen gedurende 100000 seconden. We kunnen gerust de Micro:Bit iets anders laten doen in de oneindige lus  (zie later) 
+•	Er is een aparte functie (zie eerder) opgenomen in de code met de naam:  log_data() zonder parameter. Deze methode of functie wordt aangeroepen (uitgevoerd) op basis van een timer:  @run_every(h=1, min=20, s=30, ms=50). 
+•	In die timer functie wordt een klein beepje afgespeeld zodat je de werking van de timer kan horen. Be werking kan natuurlijk dit wordne weggelaten.
+
+Als je nu de gelogde data wenst te lezen dan kan je als volgt doen:
+•	Ontkoppel de Micro:Bit van de USB-kabel en wacht 10 seconden en koppel die terug aan (let wel de logging zal opnieuw starten, maar de oude data is bereikbaar , nieuwe logging data zal maar bereikbaar zijn na een volledige reset van de Micro:Bit => ontkoppel van USB / wacht 10sec / en koppel terug aan de computer)
+•	Ga naar de Verkenner van de computer en zoek naar de extra harddrive die de Micro:Bit heeft gemaakt tijdens het koppelen:
+
+![example image](./images/verkenner1.png "Weergave Windows Verkenner")
+
+Klik op die drive en zoek het bestand: MY_DATA.HTM
+
+![example image](./images/verkenner2.png "Weergave Windows Verkenner")
+
+Open dit bestand door dubbelklik:
+
+![example image](./images/data.png "Weergave Micro:Bit logdata")
+
+Met copy kan je de lijst exporteren naar Excel (CSV). Met Visual preview kan je een grafische weergave bekijken van de data.
+
+## Starten en stoppen van Data logging en clear de data
+
+Soms is het handig om ...
+
+```python
+# Imports go at the top
+from microbit import *
+import log
+
+log.set_labels('X','Y','Z', timestamp=log.MILLISECONDS)
+logging = False
+
+@run_every(ms=50)
+def log_data():
+    if logging == True:
+        log.add({'X': accelerometer.get_x(),'Y': accelerometer.get_y(),'Z': accelerometer.get_z()})
+
+# Code in a 'while True:' loop repeats forever    
+while True:
+    if button_a.was_pressed():
+        logging = not logging
+        if logging == True:
+            display.set_pixel(2,2,9)
+        else:
+            display.clear()
+    if button_b.was_pressed():
+        log.delete()
+        display.show(Image.SQUARE_SMALL)
+        sleep(500)
+        display.clear()
+        log.set_labels('X','Y','Z', timestamp=log.MILLISECONDS)
+        
+```
+
+Have fun with Micro:Bit,
+Wim
+
+
+
+
+
 
 
 ```mermaid
