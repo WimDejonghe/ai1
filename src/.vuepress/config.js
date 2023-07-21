@@ -50,6 +50,7 @@ module.exports = {
           children: [
             '',
             'microbit',
+            'ai',
           ]
         }
       ],
