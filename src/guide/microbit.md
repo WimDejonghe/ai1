@@ -211,7 +211,7 @@ while True:
   sleep(wacht_tijd)
 ```
 
-::: details
+::: tip
 **Concatenatie:**
 Is het samenvoegen (aan elkaar kleven) van twee string-type variabelen.
 :::
@@ -222,7 +222,7 @@ tekst1 = "Hallo"
 tekst2 = " wereld!"
 samengevoegd1 = tekst1 + tekst2
 ```
-::: details
+::: tip
 **Type casting:**
 Is het converteren (omvormen) van een variabele naar een ander type (indien mogelijk).
 :::
