@@ -384,13 +384,18 @@ while True:
 #### Parkeer garage (V1)
 
 Hier maken we een parking-display met aanduiding van het aantal bezette plaatsen. 
-Gegeven:
-Er zijn 10 plaatsen.
-Drukknop A => registratie aan de ingang 
+
+**Gegeven:**
+
+Er zijn 10 plaatsen.</br>
+Drukknop A => registratie aan de ingang </br>
 Drukknop B => registratie aan de uitgang
-Gevraagd:
+
+**Gevraagd:**
+
 Maak een teller zorg ervoor dat de teller niet boven de 10 plaatsen gaat en ook niet onder de 0 plaatsen gaat.
-Oplossing:
+
+**Oplossing:**
 
 ```python
 from microbit import *
@@ -409,7 +414,10 @@ while True:
 
 #### Lopende LED
 
+```python
 display.set_pixel(x,y,helderheid)
+```
+
 Met dit Micro:Bit statement kan een bepaalde pixel binnen de LED matrix worden aangestuurd.
 Er wordt hier gebruik gemaakt van twee geneste FOR-loops om een loop-sequentie te programmeren.
 
@@ -444,12 +452,12 @@ Dwz, als de parameters integer waarden zijn , dan zal de computer de bewerking o
 :::
 
 Is echter een parameter een float dan zal de computer een complexere berekening uitvoeren en zal het resultaat ook een float zijn.
-Met deze redenering is er echter een probleem bij de deling / . Twee integer waarden delen zal steeds een integer opleveren. Dit kan dus tot een onvolledige deling leiden. Vb:
-10/5 = 2
-5/2=2 !!!! volledig behandeld met integers
+Met deze redenering is er echter een probleem bij de deling / . Twee integer waarden delen zal steeds een integer opleveren. Dit kan dus tot een onvolledige deling leiden. Vb:</br>
+10/5 = 2</br>
+5/2=2 !!!! volledig behandeld met integers</br>
 5.0/2=2.5
 
-Met integers kan ook een restdeling worden uitgevoerd (modulo deling). Vb:
+Met integers kan ook een restdeling worden uitgevoerd (modulo deling). Vb:</br>
 11%4 = 11 mod 4 = 3
 
 Hiermee kunnen we de coördinaten van een LED x, y bepalen uit een groter getal:
