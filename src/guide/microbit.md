@@ -350,8 +350,8 @@ while True:
   display.scroll(teller)  
 ```
 
-<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:0px;">
-<p style="color:lightgreen; margin:10">Programmeer een tafel van vermenigvuldiging.
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Programmeer een tafel van vermenigvuldiging.
 Programmeer een toepassing waarbij je met A een teller tot een bepaalde waarde brengt. Door dan op B te drukken laat je een lichtje zoveel keer knipperen.
 </p>
 </div>
