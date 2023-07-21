@@ -115,6 +115,7 @@ while True:
 **Gebruik van een variabele:**
 
 Je zou dit kunnen programmeren om eenmalig een getal te laten aftellen:
+
 ```python
 from microbit import *
 display.show(4)
@@ -348,6 +349,12 @@ while True:
     teller = 0
   display.scroll(teller)  
 ```
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:0px;">
+<p style="color:green; margin:0">Programmeer een tafel van vermenigvuldiging.
+Programmeer een toepassing waarbij je met A een teller tot een bepaalde waarde brengt. Door dan op B te drukken laat je een lichtje zoveel keer knipperen.
+</p>
+</div>
 
 
 ```mermaid
