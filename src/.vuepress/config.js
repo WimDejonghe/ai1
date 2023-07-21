@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'WebSite AI Powered STEM',
+  title: 'AI Powered STEM',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */

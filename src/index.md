@@ -2,7 +2,7 @@
 home: true
 <!--- heroImage: https://v1.vuepress.vuejs.org/hero.png --->
 heroImage: https://www.vives.be/sites/default/files/uploads/huisstijl/Logo VIVES Hogeschool - Smile.png
-tagline:  
+tagline: Flankerend Project West-Vlaanderen
 actionText: Starten →
 actionLink: /guide/
 features:
