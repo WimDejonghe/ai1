@@ -523,18 +523,129 @@ while True:
     display.show(Image.SAD)
 ```
 
+Standaard staan de pinnen op RESISTIVE.
+
 ### Random integer (dobbelsteen)
 
 De Micro:Bit kan een random getal genereren tussen bepaalde grenzen. Hiervoor moet echter wel een aparte bibliotheek worden geïmporteerd. Met random.randint(ondergrens, bovengrens) kan dus een getal worden gegenereerd. 
 
 ```python
 from microbit import *
+import random
 pin0.set_touch_mode(pin0.CAPACITIVE)
 while True:
   if button_a.was_pressed():
     display.show(random.randint(1,6))    
 ```
 
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Uitbreiding: maak op de LED matrix de visualisatie van een echte dobbelsteen.
+</p>
+</div>
+
+```python
+from microbit import *
+import random
+while True:
+  if button_a.was_pressed():
+    waarde = random.randint(1,6)  
+    if waarde == 1:
+      display.clear()
+      display.set_pixel(2,2,9)
+    elif waarde == 2:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(4,4,9)
+    elif waarde == 3:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(2,2,9)
+      display.set_pixel(4,4,9)
+    elif waarde == 4:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(0,4,9)
+      display.set_pixel(4,0,9)
+      display.set_pixel(4,4,9)
+    elif waarde == 5:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(2,2,9)
+      display.set_pixel(0,4,9)
+      display.set_pixel(4,0,9)
+      display.set_pixel(4,4,9)
+    else:
+      display.clear()
+      display.set_pixel(0,2,9)
+      display.set_pixel(4,2,9)
+      display.set_pixel(0,0,9)
+      display.set_pixel(0,4,9)
+      display.set_pixel(4,0,9)
+      display.set_pixel(4,4,9)
+```
+
+## Functies/Methoden met een parameter
+
+Je kan ook een aparte functie maken om de Leds aan te sturen in python. Functies worden binnen programmeertalen ook als methoden benoemd of subroutines. 
+Vorige oefening van de dobbelsteen wordt hier in een functie verwerkt. De functie moet natuurlijk worden aangeroepen vanuit het hoofdprogramma.
+
+```python
+from microbit import *
+import random
+def toonLeds(waarde):
+  if waarde == 1:
+      display.clear()
+      display.set_pixel(2,2,9)
+    elif waarde == 2:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(4,4,9)
+    elif waarde == 3:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(2,2,9)
+      display.set_pixel(4,4,9)
+    elif waarde == 4:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(0,4,9)
+      display.set_pixel(4,0,9)
+      display.set_pixel(4,4,9)
+    elif waarde == 5:
+      display.clear()
+      display.set_pixel(0,0,9)
+      display.set_pixel(2,2,9)
+      display.set_pixel(0,4,9)
+      display.set_pixel(4,0,9)
+      display.set_pixel(4,4,9)
+    else:
+      display.clear()
+      display.set_pixel(0,2,9)
+      display.set_pixel(4,2,9)
+      display.set_pixel(0,0,9)
+      display.set_pixel(0,4,9)
+      display.set_pixel(4,0,9)
+      display.set_pixel(4,4,9)
+
+while True:
+  if button_a.was_pressed():
+    getal = random.randint(1,6)  
+    toonLeds(getal)
+```
+
+## Gebeurtenis (event) bij schudden
+
+![example image](./images/ax.png "Acceleratie sensor")
+
+De Micro:Bit bezit een acceleratie-sensor die op de in de drie dimensies een versnelling kan waarnemen. Schudden is een actie die in de drie dimensies een versnelling kan veroorzaken. De Micro:Bit kan dit waarnemen en dit als voorwaarde worden gebruikt om een handeling uit te voeren. Is vergelijkbaar met een event op een knop maar nu niet drukken maar bij schudden.
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht : laat de Micro:Bit een random getal genereren (0-100) bij het schudden van de Micro:Bit en geef dit getal weer op het LED-display.
+</p>
+</div>
+
+
+ 
 
 
 ```mermaid
