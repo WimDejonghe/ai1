@@ -180,6 +180,12 @@ while True:
   sleep(wacht_tijd)
 ```
 
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Zet eens de variabele wacht_tijd op waarde 0. Wat gebeurt er?
+Laat de “sleep “eens weg. Wat gebeurt er?
+</p>
+</div>
+
 **Gebruik van een For-Loop:**
 
 Stel dat je een aftelling wilt maken niet van 4 naar 0, maar van 1000000 naar 0. Dan wordt het programma onzinnig met een miljoen aan dezelfde statements.
@@ -827,9 +833,10 @@ while True:
 
 Als je nu de gelogde data wenst te lezen dan kan je als volgt doen:
 
-•	Ontkoppel de Micro:Bit van de USB-kabel en wacht 10 seconden en koppel die terug aan (let wel de logging zal opnieuw starten, maar de oude data is bereikbaar , nieuwe logging data zal maar bereikbaar zijn na een volledige reset van de Micro:Bit => ontkoppel van USB / wacht 10sec / en koppel terug aan de computer)
-
-•	Ga naar de Verkenner van de computer en zoek naar de extra harddrive die de Micro:Bit heeft gemaakt tijdens het koppelen:
+<ul>
+<li>Ontkoppel de Micro:Bit van de USB-kabel en wacht 10 seconden en koppel die terug aan (let wel de logging zal opnieuw starten, maar de oude data is bereikbaar , nieuwe logging data zal maar bereikbaar zijn na een volledige reset van de Micro:Bit => ontkoppel van USB / wacht 10sec / en koppel terug aan de computer)</li>
+<li>Ga naar de Verkenner van de computer en zoek naar de extra harddrive die de Micro:Bit heeft gemaakt tijdens het koppelen:</li>
+</ul>
 
 ![example image](./images/verkenner1.png "Weergave Windows Verkenner")
 
