@@ -356,6 +356,186 @@ Programmeer een toepassing waarbij je met A een teller tot een bepaalde waarde b
 </p>
 </div>
 
+### Rekenkundige operatoren
+
+![example image](./images/reken.png "Bewerkingsoperatoren")
+
+### Geluid met de Micro:Bit
+
+De Micro:Bit bevat enkele actuatoren. De Led matrix is een actuator, maar er zit ook een microfoon (wat eigenlijk een sensor is) op de Micro:Bit die ook invers kan worden gebruikt om geluid af te spelen (dus nu actuator).
+Een voorbeeldje van een sweep geluid tussen twee frequenties in een bepaalde tijd kan zo geactiveerd worden:
+
+```python
+from microbit import *
+while True:
+  if button_a.was_pressed():
+    my_effect = audio.SoundEffect(freq_start=400, freq_end=2500, duration=500)
+    audio.play(my_effect)
+```
+
+### Enkele programmeer voorbeeldjes:
+
+#### Parkeer garage (V1)
+
+Hier maken we een parking-display met aanduiding van het aantal bezette plaatsen. 
+Gegeven:
+Er zijn 10 plaatsen.
+Drukknop A => registratie aan de ingang 
+Drukknop B => registratie aan de uitgang
+Gevraagd:
+Maak een teller zorg ervoor dat de teller niet boven de 10 plaatsen gaat en ook niet onder de 0 plaatsen gaat.
+Oplossing:
+
+```python
+from microbit import *
+#declaratie van enkele variabelen
+max_plaatsen = 10
+plaatsenbezet = 0
+while True:
+  if button_a.was_pressed():
+    if plaatsenbezet < max_plaatsen:
+      plaatsenbezet = plaatsenbezet + 1
+  if button_b.was_pressed():
+    if plaatsenbezet > 0:
+      plaatsenbezet = plaatsenbezet - 1 
+  display.scroll(plaatsenbezet) 
+```
+
+#### Lopende LED
+
+display.set_pixel(x,y,helderheid)
+Met dit Micro:Bit statement kan een bepaalde pixel binnen de LED matrix worden aangestuurd.
+Er wordt hier gebruik gemaakt van twee geneste FOR-loops om een loop-sequentie te programmeren.
+
+```python
+from microbit import *
+#declaratie van enkele variabelen
+max_plaatsen = 10
+plaatsenbezet = 0
+while True:
+  for y in range(5):
+    for x in range (5):
+      display.set_pixel(x,y,9)
+      sleep(50)
+  sleep(1000)
+  display.clear()
+  sleep(1000)
+```
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Analyseer de werking en programmeer nog andere sequenties.
+</p>
+</div>
+
+#### Parkeer garage (V2)
+
+De bezetten plaatsen / vrije plaatsen kunnen we ook grafisch aanduiden op de LED-matrix. Er zijn 5*5 LED’s, zo kunnen we een parkeergarage van 25 plaatsen visualiseren. 
+Rekenkundige bewerkingen: de normale bewerkingen spreken voor zich: + - * die kunnen zowel met integer- als met float waarden werken. 
+
+::: danger
+Let wel : een computer kijkt steeds om een bewerking zo eenvoudig mogelijk uit te voeren. 
+Dwz, als de parameters integer waarden zijn , dan zal de computer de bewerking ook uitvoeren met integer waarden en het resultaat zal ook een integer zijn. 
+:::
+
+Is echter een parameter een float dan zal de computer een complexere berekening uitvoeren en zal het resultaat ook een float zijn.
+Met deze redenering is er echter een probleem bij de deling / . Twee integer waarden delen zal steeds een integer opleveren. Dit kan dus tot een onvolledige deling leiden. Vb:
+10/5 = 2
+5/2=2 !!!! volledig behandeld met integers
+5.0/2=2.5
+
+Met integers kan ook een restdeling worden uitgevoerd (modulo deling). Vb:
+11%4 = 11 mod 4 = 3
+
+Hiermee kunnen we de coördinaten van een LED x, y bepalen uit een groter getal:
+
+```python
+from microbit import *
+#declaratie van enkele variabelen
+max_plaatsen = 25
+plaatsenbezet = 0
+yPos = 0
+xPos = 0
+ledWaarde = 0
+while True:
+  if button_a.was_pressed():
+    if plaatsenbezet < max_plaatsen:
+      plaatsenbezet += 1
+      ledWaarde = plaatsenbezet - 1
+      xPos = ledWaarde % 5
+      yPos = int(ledWaarde / 5)
+      display.set_pixel(xPos, yPos, 9)
+  if button_b.was_pressed():
+    if plaatsenbezet > 0:
+      plaatsenbezet -= 1
+      ledWaarde = plaatsenbezet
+      xPos = ledWaarde % 5
+      yPos = int(ledWaarde / 5)
+      display.set_pixel(xPos, yPos, 0)
+```
+
+### Touch logo
+
+De Micro:Bit bevat ook een touch-logo (net zoals de drukknop ook een soort sensor). Dit is een soort drukknop die werkt op capacitieve verandering. Het volstaat om met de vinger hier dicht in de buurt te komen om de drukknop te activeren (analogie met een touch-screen)
+
+![example image](./images/touch.png "Touch sensor")
+
+```python
+from microbit import *
+while True:
+  if pin_logo.is_touched():
+    display.show(Image.HAPPY)
+    sleep(100)
+    display.clear()
+```
+
+### Externe pinnen
+
+![example image](./images/pinnen.gif "Micro:Bit aansluitingen")
+
+De meeste pinnen kunnen gebruikt worden als digitale in/uitgang. Sommige pinnen kunnen ook een als een analoge ingang worden gebruikt (om bv een analoge sensor die een analoge elektrische spanning afgeeft ifv een te meten grootheid als druk, temperatuur, geluid, licht, CO2, ….). Nog andere pinnen kunnen worden gebruikt binnen een bus-protocol standaard (SPI, I2C).
+Zelf een drukknop maken kan eenvoudig door een elektrische verbinding te maken tussen de 0-pin en de GND. Dit met een elektrisch geleidende stof en niet met een isolator.
+
+```python
+from microbit import *
+while True:
+  if pin0.is_touched():
+    display.show(Image.HAPPY)
+  else:
+    display.show(Image.SAD)
+```
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: maak een knop met aluminiumfoliestrookjes en krokodil-klemmen. Is een menselijk lichaam een geleider of een isolator?
+</p>
+</div>
+
+#### Capacitieve Touch pin P0
+
+Een pin kan ook veel gevoeliger worden gemaakt door die als een touch-sensor te laten werken (capacitief). Hierbij is geen verbinding nodig naar de GND als je met je vinger in de buurt komt van P0. Dit kan door éénmalig de touch_mode op die pin als capacitive in te stellen.:
+
+```python
+from microbit import *
+pin0.set_touch_mode(pin0.CAPACITIVE)
+while True:
+  if pin0.is_touched():
+    display.show(Image.HAPPY)
+  else:
+    display.show(Image.SAD)
+```
+
+### Random integer (dobbelsteen)
+
+De Micro:Bit kan een random getal genereren tussen bepaalde grenzen. Hiervoor moet echter wel een aparte bibliotheek worden geïmporteerd. Met random.randint(ondergrens, bovengrens) kan dus een getal worden gegenereerd. 
+
+```python
+from microbit import *
+pin0.set_touch_mode(pin0.CAPACITIVE)
+while True:
+  if button_a.was_pressed():
+    display.show(random.randint(1,6))    
+```
+
+
 
 ```mermaid
 flowchart TD
