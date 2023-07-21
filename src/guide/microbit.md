@@ -211,17 +211,21 @@ while True:
   sleep(wacht_tijd)
 ```
 
+::: details
 **Concatenatie:**
 Is het samenvoegen (aan elkaar kleven) van twee string-type variabelen.
+:::
+
 ```python
 from microbit import *
 tekst1 = "Hallo"
 tekst2 = " wereld!"
 samengevoegd1 = tekst1 + tekst2
 ```
-
+::: details
 **Type casting:**
 Is het converteren (omvormen) van een variabele naar een ander type (indien mogelijk).
+:::
 ```python
 from microbit import *
 tekst = "6"
@@ -239,7 +243,9 @@ Het komt zeer veel voor dat er data moet worden uitgewisseld tussen de µBit en 
 <li>µBit zal die laatste string-variabele omvormen naar een integer-variabele om het  aantal keer een For-Loop moet worden doorlopen.</li>
 </ul>
 
+::: warning
 Let op in de code: het inlezen (input) is steeds van het type String. Aangezien we dit als een getal willen gebruiken moet hier dus een typecasting gebeuren van een string naar een integer. Let wel, dit kan fout lopen indien er geen omzetbaar symbool wordt ingegeven.
+:::
 
 ```python
 from microbit import *
@@ -290,8 +296,8 @@ while True:
     display.scroll('knopA&B')
 ```
 
-Er zijn dus drie combinaties met twee drukknoppen:
-A and notB   / notA and B   / A and B
+Er zijn dus vier combinaties met twee drukknoppen:
+notA and notB / A and notB   / notA and B   / A and B
 Dit behoort tot de logische operatoren.
 
 **Logische operatoren**
