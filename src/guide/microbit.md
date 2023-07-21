@@ -678,12 +678,16 @@ while True:
 ## Analyse sensoren
 
 Op de Micro:Bit zitten al een aantal sensoren die in python kunnen worden uitgelezen. Onboard:
-•	Gyro sensor : 3-dimensionele versnelling (g-force)
-•	Magnetisme : 3-dimensionele magnetische veldsterkte  (µ-tesla)
-•	Geluidsensor
-•	Temperatuursensor
-•	Lichtsensor
-•	Voel-sensoren (drukknoppen, en touch sensor, externe: pinnen)
+
+<ul>
+<li>Accelerosensor : 3-dimensionele versnelling (g-force)</li>
+<li>Magnetisme : 3-dimensionele magnetische veldsterkte  (µ-tesla)</li>
+<li>Geluidsensor</li>
+<li>Temperatuursensor</li>
+<li>Lichtsensor</li>
+<li>Voel-sensoren (drukknoppen, en touch sensor, externe: pinnen)</li>
+</ul>
+
 Om een analyse (studie) te maken over de werking en verwerking van data binnen de Micro:Bit kunnen we gebruik maken van het print() python statement. De Micro:Bit kan zeker uitgebreid worden met externe sensoren door die juist aan te sluiten op de beschikbare pinnen.
 Analyse van lichtsensor:
 
@@ -810,14 +814,21 @@ while True:
 ```
 
 **Uitleg code**: 
-•	Vooreerst zie je dat een extra import moet uitvoeren van log
-•	Daarna moet 1 keer log.set_labels() worden uitgevoerd die aangeeft wat de hoofding (gewoon tekst) van die reeks getallen zal inhouden. Stel dat je meerdere verschillende waarden wil loggen op het zelfde moment, dan kunnen die waarden gescheiden worden van elkaar door ze in aparte kolommen op te nemen en de kolom te voorzien van een hoofding (titel). Dit kan achteraf eenvoudig in Excel worden gelezen.
-•	We zien dat er in de code een oneindige lus (While True:) is opgenomen maar dat we daar niets in doen. We laten daar de Micro:Bit slapen gedurende 100000 seconden. We kunnen gerust de Micro:Bit iets anders laten doen in de oneindige lus  (zie later) 
-•	Er is een aparte functie (zie eerder) opgenomen in de code met de naam:  log_data() zonder parameter. Deze methode of functie wordt aangeroepen (uitgevoerd) op basis van een timer:  @run_every(h=1, min=20, s=30, ms=50). 
-•	In die timer functie wordt een klein beepje afgespeeld zodat je de werking van de timer kan horen. Be werking kan natuurlijk dit wordne weggelaten.
+
+<ul>
+<li>Vooreerst zie je dat een extra import moet uitvoeren van log</li>
+<li>Daarna moet 1 keer log.set_labels() worden uitgevoerd die aangeeft wat de hoofding (gewoon tekst) van die reeks getallen zal inhouden. Stel dat je meerdere verschillende waarden wil loggen op het zelfde moment, dan kunnen die waarden gescheiden worden van elkaar door ze in aparte kolommen op te nemen en de kolom te voorzien van een hoofding (titel). Dit kan achteraf eenvoudig in Excel worden gelezen.</li>
+<li>We zien dat er in de code een oneindige lus (While True:) is opgenomen maar dat we daar niets in doen. We laten daar de Micro:Bit slapen gedurende 100000 seconden. We kunnen gerust de Micro:Bit iets anders laten doen in de oneindige lus  (zie later)</li>
+<li>Er is een aparte functie (zie eerder) opgenomen in de code met de naam:  log_data() zonder parameter. Deze methode of functie wordt aangeroepen (uitgevoerd) op basis van een timer:  @run_every(h=1, min=20, s=30, ms=50). </li>
+<li>In die timer functie wordt een klein beepje afgespeeld zodat je de werking van de timer kan horen. Bij werking kan natuurlijk dit worden weggelaten.</li>
+
+
+</ul>
 
 Als je nu de gelogde data wenst te lezen dan kan je als volgt doen:
+
 •	Ontkoppel de Micro:Bit van de USB-kabel en wacht 10 seconden en koppel die terug aan (let wel de logging zal opnieuw starten, maar de oude data is bereikbaar , nieuwe logging data zal maar bereikbaar zijn na een volledige reset van de Micro:Bit => ontkoppel van USB / wacht 10sec / en koppel terug aan de computer)
+
 •	Ga naar de Verkenner van de computer en zoek naar de extra harddrive die de Micro:Bit heeft gemaakt tijdens het koppelen:
 
 ![example image](./images/verkenner1.png "Weergave Windows Verkenner")
@@ -872,15 +883,4 @@ Wim
 
 
 
-
-
-
-```mermaid
-flowchart TD
-    A[Start] --> B{Is it?}
-    B -->|Yes| C[OK]
-    C --> D[Rethink]
-    D --> B
-    B ---->|No| E[End]
-```
 
