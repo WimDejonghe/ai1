@@ -63,7 +63,8 @@ Binnen een programmeertaal zijn een aantal zaken belangrijk en keren steeds teru
   <li>Maken van eigen functies met daarbij parameters en return waarden</li>
 </ol>
 
-**Iets meer over variabelen:**
+## Iets meer over variabelen:
+
 Tekst die bestaat uit meerdere tekens, omsloten door enkele of dubbele aanhalingtekens wordt een **string** genoemd . (“string”) </br>
 Een getal kan een **integer** zijn (geheel getal) of een **float** (een komma getal)( Let op! moet een punt zijn i.p.v. een komma)</br>
 Een **boolean** is een variabele die maar twee toestanden kent: 0 of 1 , soms wel als **False** en **True** uitgedrukt.  </br>
@@ -71,7 +72,7 @@ Een **boolean** is een variabele die maar twee toestanden kent: 0 of 1 , soms we
 
 ![example image](./images/vars.png "De soorten variabelen.")
 
-**Iets meer over iteraties:**
+## Iets meer over iteraties:
 
 Door Python code te schrijven kan een statement, instructie één keer worden uitgevoerd, door die code op te nemen in een While-True statement kan een oneindige herhaling worden gecreëerd waarbij dit statement telkens zal worden herhaald. (zie verder) 
 
@@ -95,12 +96,14 @@ display.show(Image( '90900:'#helderheid individuele LED's
 Toon hiermee 1 cijfer en experimenteer met getallen bestaande uit meerdere cijfers.
 
 **Toon 1 keer een getal:**
+
 ```python
 from microbit import *
 
 display.scroll(1234)
 ```
 **Herhaal telkens de weergave van een getal:**
+
 ```python
 from microbit import *
 
@@ -222,10 +225,12 @@ tekst1 = "Hallo"
 tekst2 = " wereld!"
 samengevoegd1 = tekst1 + tekst2
 ```
+
 ::: tip
 **Type casting:**
 Is het converteren (omvormen) van een variabele naar een ander type (indien mogelijk).
 :::
+
 ```python
 from microbit import *
 tekst = "6"
@@ -233,6 +238,7 @@ naarInteger = int(tekst)
 ```
 
 ### Communicatie µBit via USB kabel (via console/terminal) -statement: input - print
+
 Het komt zeer veel voor dat er data moet worden uitgewisseld tussen de µBit en de buitenwereld. De meest eenvoudige buitenwereld is de computer waarop de µBit is op aangesloten via een USB kabel. Deze wordt gebruikt om de µBit te programmeren. Maar ook tijdens het runnen van een programma op de µBit is er soms nood om te communiceren met het programma op de µBit. Dit kan in twee richtingen. Data van µBit naar computer (**print**), of data van de computer naar de µBit (**input**). Volgend voorbeeld toont beide mogelijkheden in volgende stappen: 
 <ul>
 <li>µBit vraagt (<b>input</b>) aan de computer de naam van de gebruiker</li>
@@ -264,6 +270,7 @@ for i in range(int(aantalKeer)):
 ![example image](./images/input.png "Het input/print statement")
 
 ### Gebeurtenis op basis van drukknoppen
+
 Binnen de oneindige WHILE-loop kan er steeds nagegaan worden of een drukknop is ingedrukt. Hiervoor gebruiken we een IF-statement (keuze optie: levert altijd een True/False op). Een IF-statement kan op verschillende manieren worden gebruikt, zo is er ook een ELSE mogelijkheid, of zelfs combinaties. We houden het hier eenvoudig.
 
 Binnen de MicroPython van de Micro:Bit kan gebruik gemaakt worden van:
@@ -281,14 +288,19 @@ while True:
   if button_b.is_pressed():
     display.scroll('knopB')
 ```
+::: tip
 Blijf eens op een knop drukken om het verschil te zien in voorgaande.
+:::
+
 
 Een IF-statement werkt heel veel samen met vergelijkingsoperatoren.
 
-**Vergelijkingsoperatoren**
+### Vergelijkingsoperatoren
+
 ![example image](./images/compare.png "Vergelijkingsoperatoren")
 
 Iets uitvoeren als er op beide wordt gedrukt:
+
 ```python
 from microbit import *
 while True:
@@ -300,10 +312,12 @@ Er zijn dus vier combinaties met twee drukknoppen:
 notA and notB / A and notB   / notA and B   / A and B
 Dit behoort tot de logische operatoren.
 
-**Logische operatoren**
+### Logische operatoren
+
 ![example image](./images/LogicalOperators.png "Logische operatoren")
 
 Vier toestanden met twee drukknoppen:
+
 ```python
 from microbit import *
 while True:
@@ -316,9 +330,12 @@ while True:
   if (not(button_a.is_pressed()) and (not button_b.is_pressed())):
     display.show('0')
 ```
+
 **Tellen en weergeven van het aantal keren gedrukt op knop A**
+
 Hier gaan we het aantal kliks op drukknop A bijhouden in een variabele (integer) met de naam teller. Telkens als er op de drukknop A wordt gedrukt moet de waarde van teller uit het geheugen gehaald worden (lezen), en moet daar 1 bij opgeteld worden. Daarna schrijven we het resultaat van die optelling terug naar het geheugen in dezelfde variabele teller (klaar voor de volgende klik).
 Teller kan gereset worden door op drukknop B te drukken.
+
 ```python
 from microbit import *
 #declaratie van de teller variabele 
