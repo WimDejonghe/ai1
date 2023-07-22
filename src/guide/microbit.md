@@ -760,12 +760,12 @@ while True:
 
 ::: tip
 **Uitbreiding:**
-Je kan gerust meerdere niveaus gebruiken met meerdere helderheden.
+Gebruik meerdere niveaus om meerdere helderheden toe te passen.
 :::
 
 ### Geluidsensor
 
-Gelijkaardig kan je een analyse doen met de geluidsensor. Doe dit eerst door de waarde van het geluid te PRINTEN naar de Serial console. Bepaal hiermee welke waarden vertegenwoordigen stil/luid? Wat is stil? Wat is luid? Bepaal een grenswaarde en schrijf dan code om een alarm te maken wanneer er teveel lawaai is in de klas.
+Gelijkaardig kan je een analyse doen met de geluidsensor. Doe dit eerst door de waarde van het geluid te **PRINTEN** naar de Serial console. Bepaal hiermee welke waarden vertegenwoordigen stil/luid? Wat is stil? Wat is luid? Bepaal een grenswaarde en schrijf dan code om een alarm te maken wanneer er teveel lawaai is in de klas.
 Meet het geluid in Python met het statement : 
 
 ```python
@@ -812,9 +812,9 @@ Stuur opnieuw waarden naar de Serial console na de kalibratie procedure gevolgd 
 
 ## Datalogging
 
-Nu we wat ervaring hebben met de verschillende sensoren willen we veelal waarden van die sensoren gaan loggen (data wegschrijven op de Micro:Bit zelf en die bijhouden) gedurende een bepaalde tijd of een bepaalde omstandigheid om er dan nadien een analyse op uit te voeren eventueel met Excel. 
+Nu je wat ervaring hebt met de verschillende sensoren wil je veelal waarden van die sensoren gaan loggen (data wegschrijven op de Micro:Bit zelf en die bijhouden) gedurende een bepaalde tijd of een bepaalde omstandigheid om er dan nadien een analyse op uit te voeren eventueel met Excel. 
 We wensen dus bijvoorbeeld de lichtsterkte (zonlicht) te monitoren gedurende een volledige dag en dit door iedere minuut een lichtmeting uit te voeren. 
-Dit kan met de Micro:Bit in Python als volgt gebeuren.
+Dit kan met de Micro:Bit in Python als volgt gebeuren. In het voorbeeld wordt er per seconde gelogd om het iets sneller te laten verlopen.
 
 ```python
 # Imports go at the top
@@ -837,12 +837,10 @@ while True:
 
 <ul>
 <li>Vooreerst zie je dat een extra import moet uitvoeren van log</li>
-<li>Daarna moet 1 keer log.set_labels() worden uitgevoerd die aangeeft wat de hoofding (gewoon tekst) van die reeks getallen zal inhouden. Stel dat je meerdere verschillende waarden wil loggen op het zelfde moment, dan kunnen die waarden gescheiden worden van elkaar door ze in aparte kolommen op te nemen en de kolom te voorzien van een hoofding (titel). Dit kan achteraf eenvoudig in Excel worden gelezen.</li>
+<li>Daarna moet één keer log.set_labels() worden uitgevoerd die aangeeft wat de hoofding (gewoon tekst) van die reeks getallen zal inhouden. Stel dat je meerdere verschillende waarden wil loggen op het zelfde moment, dan kunnen die waarden gescheiden worden van elkaar door ze in aparte kolommen op te nemen en de kolom te voorzien van een hoofding (titel). Dit kan achteraf eenvoudig in Excel worden gelezen.</li>
 <li>We zien dat er in de code een oneindige lus (While True:) is opgenomen maar dat we daar niets in doen. We laten daar de Micro:Bit slapen gedurende 100000 seconden. We kunnen gerust de Micro:Bit iets anders laten doen in de oneindige lus  (zie later)</li>
 <li>Er is een aparte functie (zie eerder) opgenomen in de code met de naam:  log_data() zonder parameter. Deze methode of functie wordt aangeroepen (uitgevoerd) op basis van een timer:  @run_every(h=1, min=20, s=30, ms=50). </li>
 <li>In die timer functie wordt een klein beepje afgespeeld zodat je de werking van de timer kan horen. Bij werking kan natuurlijk dit worden weggelaten.</li>
-
-
 </ul>
 
 Als je nu de gelogde data wenst te lezen dan kan je als volgt doen:
@@ -866,7 +864,7 @@ Met copy kan je de lijst exporteren naar Excel (CSV). Met Visual preview kan je 
 
 ## Starten en stoppen van Data logging en clear de data
 
-Soms is het handig om ...
+Soms is het handig om het proces te kunnen starten en stoppen. Met knop A kan het loggen worden gestart en gestopt. Met knop B kan de log data worden gewist. 
 
 ```python
 # Imports go at the top
