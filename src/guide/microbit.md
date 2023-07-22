@@ -373,7 +373,7 @@ Programmeer een toepassing waarbij je met A een teller tot een bepaalde waarde b
 
 ### Geluid met de Micro:Bit
 
-De Micro:Bit bevat enkele actuatoren. De Led matrix is een actuator, maar er zit ook een microfoon (wat eigenlijk een sensor is) op de Micro:Bit die ook invers kan worden gebruikt om geluid af te spelen (dus nu actuator).
+De Micro:Bit bevat enkele actuatoren. De Led is een actuator (meerdere Led's samen vormen de Led-matrix op de Micro:Bit), maar er zit ook een microfoon (wat eigenlijk een sensor is) op de Micro:Bit die ook invers kan worden gebruikt om geluid af te spelen (dus nu actuator).
 Een voorbeeldje van een sweep geluid tussen twee frequenties in een bepaalde tijd kan zo geactiveerd worden:
 
 ```python
@@ -448,7 +448,7 @@ while True:
 
 #### Parkeer garage (V2)
 
-De bezetten plaatsen / vrije plaatsen kunnen we ook grafisch aanduiden op de LED-matrix. Er zijn 5*5 LED’s, zo kunnen we een parkeergarage van 25 plaatsen visualiseren. 
+De bezette- / vrije plaatsen kunnen we ook grafisch aanduiden op de LED-matrix. Er zijn 5*5 LED’s, zo kunnen we een parkeergarage van 25 plaatsen visualiseren. 
 Rekenkundige bewerkingen: de normale bewerkingen spreken voor zich: + - * die kunnen zowel met integer- als met float waarden werken. 
 
 ::: danger
@@ -675,10 +675,11 @@ while True:
 ### Schudden : Lovemeter
 
 Idem als vorige opdracht maar nu interpreteren we de random waarde naar een symbool.
-
-•	Getal tussen 0-30 : display.show(Image.SAD)
-•	Getal tussen 30-60 : display.show(Image.SMILE)
-•	Getal tussen 60-100 : display.show(Image.HAPPY)
+<ul>
+<li>Getal tussen 0-30 : display.show(Image.SAD)</li>
+<li>Getal tussen 30-60 : display.show(Image.SMILE)</li>
+<li>Getal tussen 60-100 : display.show(Image.HAPPY)</li>
+</ul>
 
 ```python
 from microbit import *
