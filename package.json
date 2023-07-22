@@ -12,14 +12,12 @@
   },
   "repository": "https://github.com/WimDejonghe/ai1",
   "scripts": {
-    
     "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress dev src",
     "build": "vuepress build src"
-    
-    
   },
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "^0.14.11"
+    "vuepress": "^0.14.11",
+    "vuepress-plugin-zooming": "^1.1.8"
   }
 }
