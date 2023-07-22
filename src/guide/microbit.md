@@ -58,6 +58,7 @@ Binnen een programmeertaal zijn een aantal zaken belangrijk en keren steeds teru
         <li>For Loop: herhaling die steeds wordt herhaald als voorwaarde True is (aantal loops is gekend)</li>
     </ul>
   </li>
+  <li>Selecties: De <b>als</b> vraag. Als een variabele voldoet aan een voorwaarde dan wordt iets uitgevoerd, indien niet dan kan er iets anders worden uitgevoerd. In programmeertalen is dit meestal het IF-statement</li>
   <li>Converties of type casting: omzetting van ene type naar een ander type variabele</li>
   <li>Concatenatie van strings: samenvoegen van twee strings tot 1 string (aan elkaar kleven)</li>
   <li>Maken van eigen functies met daarbij parameters en return waarden</li>
@@ -76,9 +77,13 @@ Een **boolean** is een variabele die maar twee toestanden kent: 0 of 1 , soms we
 
 Door Python code te schrijven kan een statement, instructie één keer worden uitgevoerd, door die code op te nemen in een While-True statement kan een oneindige herhaling worden gecreëerd waarbij dit statement telkens zal worden herhaald. (zie verder) 
 
+## Iets meer over selecties:
+
+Door gebruik te maken van vergelijkingsoperatoren zoals gelijkaan (==), groter dan (>), kleiner dan (<), ... kan een voorwaarde worden opgesteld om iets te doen, of iets niet te doen. Op deze logica is het digitaal programmeren gebouwd. In python code, net zoals in vele andere talen wordt hiervoor het IF-statement gebruikt. Hierbij zijn wel een aantal varianten mogelijk en kunnen er complexere voorwaarden worden geprogrammeerd door gebruik te maken van de logische operatoren. (zie verder in code voorbeelden)
+
 ## Micro:Bit specifieke MicroPython functies
 
-Deze functies hebben specifieke bertrekking tot de onboard sensoren en actuatoren.
+Deze functies hebben specifieke betrekking tot de onboard sensoren en actuatoren.
 
 ### Led matrix
 
@@ -114,7 +119,7 @@ while True:
 
 **Gebruik van een variabele:**
 
-Je zou dit kunnen programmeren om eenmalig een getal te laten aftellen:
+Je zou dit kunnen programmeren om éénmalig een getal te laten aftellen (count-down):
 
 ```python
 from microbit import *
@@ -181,8 +186,8 @@ while True:
 ```
 
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
-<p style="color:lightgreen; margin:10px">Opdracht: Zet eens de variabele wacht_tijd op waarde 0. Wat gebeurt er?
-Laat de “sleep “eens weg. Wat gebeurt er?
+<p style="color:lightgreen; margin:10px">Opdracht: Zet eens de variabele wacht_tijd op waarde 0. Wat gebeurt er?</br>
+Laat de “sleep“ eens weg. Wat gebeurt er?
 </p>
 </div>
 
