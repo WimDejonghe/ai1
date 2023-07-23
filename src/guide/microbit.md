@@ -896,6 +896,21 @@ while True:
         
 ```
 
+## Externe hardware
+
+Alhoewel de Micro:Bit op zich kan gebruikt worden met zijn onboard sensoren en actuatoren, kunnen de mogelijkheden en de inzetbaarheid van de Micro:Bit worden uitgebreid door er externe hardware aan te koppelen. Dit zijn meestal ook sensoren en/of actuatoren. Het is onmogelijk om hier volledig te zijn, de uitbreidingen zijn grenzeloos zolang er connectie mogelijkheden (externe pinnen) voor handen zijn op de Micro:Bit. Een beperking in die mogelijkheden dringt zich hier op, en er worden er maar enkele besproken.
+
+![example image](./images/pinnen.gif "Micro:Bit aansluitingen")
+
+Extra externe hardware kan gekoppeld worden via de pinnen van de Micro:Bit. Er zijn maar drie pinnen vlot toegankelijk die gekenmerkt worden door 0, 1 en 2. Een pin kan softwarematig worden geconfugureerd als ingang of als uitgang. 
+
+> - Een ingang zal gebruikt worden om door de microcontroller te worden gelezen, hierop zal dus één of andere vorm van sensor of detector worden aangesloten. Meest eenvoudige vorm van zoiets is een drukknop.
+> - Een uitgang zal gebruikt worden om door de microcontroller te worden aangestuurd, hierop zal dus één of andere vorm van actuator worden aangesloten. Meest eenvoudige vorm van zoiets is een LED.
+
+
+
+
+
 Have fun with Micro:Bit,
 Wim
 
