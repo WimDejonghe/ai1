@@ -933,7 +933,7 @@ Op een breadboard kan dan via draadjes verbindingen en schakelingen worden gebou
 
 De doorverbindingen van het breadboard ziet er als volgt uit:
 
-![example image](./images/bb1.jpg "Doorverbindingen breadboard")
+![example image](./images/bb1.png "Doorverbindingen breadboard")
 
 ### Een verkeerslicht bouwen
 
@@ -988,7 +988,7 @@ Op de micro:bit zijn er twee drukknoppen aanwezig die gebruikt kunnen worden. De
 Maak een programma dat het groene licht brandt voor 5 seconden als er op drukknop A wordt gedrukt. Als er op knop B wordt gedrukt moet het oranje licht branden voor 2 seconden en nadien het rode licht voor 5 seconden.
 </p>
 </div>
-
+<hr>
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord.
 We gaan in het programma voortdurend vergelijken of drukknop B ingedrukt wordt.
@@ -997,23 +997,23 @@ het oranje licht dat brandt gedurende 2 seconden.
 Als er niet op de drukknop B gedrukt wordt moet het rode licht branden.
 </p>
 </div>
-
+<hr>
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord. Maak een programma als er op drukknop A wordt gedrukt, het groene licht brandt voor 5 seconden. Als er NIET op drukknop A wordt gedrukt en als er op drukknop B wordt gedrukt moet het rode licht branden voor 5 seconden. Als er niet aan de beide voorwaarden wordt voldaan (= niet op drukknop A of B gedrukt wordt) moet het gele licht branden.
 </p>
 </div>
-
+<hr>
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord. Maak een programma als er op drukknop A wordt gedrukt het groene licht brandt voor 5 seconden. Als er NIET op drukknop A wordt gedrukt en als er op drukknop B wordt gedrukt, moet het rode licht branden voor 5 seconden. Als er niet aan de beide voorwaarden wordt voldaan (= niet op drukknop A of B wordt gedrukt) moet het oranje licht knipperen (500ms aan en 500ms uit).
 </p>
 </div>
-
+<hr>
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht: Gebruik het breadbord met het verkeerslicht. Maak een programma dat enkel het groene licht
 brandt als drukknop B niet is ingedrukt.
 </p>
 </div>
-
+<hr>
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord.
 Maak een programma door gebruik te maken van de geziene booleaanse operatoren.
@@ -1023,7 +1023,7 @@ Als drukknop A en B is ingedrukt mag enkel de oranje led branden.
 Als geen enkele drukknop is ingedrukt dan mag er geen enkele led branden.
 </p>
 </div>
-
+<hr>
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord.
 Maak een programma waarbij het oranje licht brandt als drukknop A of drukknop B is ingedrukt.
@@ -1059,6 +1059,57 @@ microcontroller als gevolg heeft.
 Dit zorgt voor volgend overzicht:
 
 ![example image](./images/drukknop3.png "Aansturen van een digitale ingang met een drukknop")
+
+Een goede technicus zal na het bouwen altijd meten of de hardware wel juist werkt. Dit kan best met een Multimeter op de stand Vdc. Hiermee wordt een gelijkspanning gemeten. 
+
+![example image](./images/switch1.png "Werking drukknop uitemeten met een multimeter")
+
+::: warning
+Niet drukken levert een spanning op die gelijk is aan de voedingsspanning van de microcontroller. Wel drukken levert een 0 volt meting op.
+:::
+
+
+> - Als de drukknop niet is ingedrukt moet de waarde op de voltmeter gelijk zijn aan de voedingsspanning van de schakeling. Hier is dat 3V.
+> - Als de drukknop is ingedrukt moet de waarde op de voltmeter gelijk zijn aan 0V.
+
+In de software kan gebruik gemaakt worden van twee soorten instructies (statements) om de toestand van een digitale ingang in te lezen en afhankelijk van de ingelezen toestand een actie daaraan te koppelen. 
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Experimenteer met volgende code en trek uw conclusies. Hoe werken volgende instructies? Wat is het verschil? In welke gevallen (teken het schema) worden deze instructies gebruikt?
+</p>
+</div>
+
+```python
+# Imports go at the top
+from microbit import *
+
+
+# Code in a 'while True:' loop repeats forever
+while True:
+    #werkt met een externe pull-up weerstand
+    if pin1.read_digital() == False:
+       display.show(1)
+    #werkt met een interne pull-up weerstand
+    if pin0.is_touched():
+       display.show(0)
+
+```
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het breadbord en het verkeerslicht. Maak een programma waarbij het verkeerslicht alleen rood is als de externe knop niet wordt ingedrukt. Als de knop wordt ingedrukt moet enkel de groene led branden.
+</p>
+</div>
+
+### Analoge ingangen
+
+
+
+### PWM uitgangen
+
+### Aansturen van servo motoren
+
+
+
 
 Have fun with Micro:Bit,
 Wim
