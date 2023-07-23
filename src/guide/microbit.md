@@ -17,6 +17,22 @@ De Micro:Bit kan in verschillende talen worden geprogrammeerd. De meest gebruikt
 
 ![example image](./images/mb_hardware.png "De hardware van de µBit")
 
+De Micro:Bit wordt via een USB-kabel verbonden met de computer. Op die computer wordt de software ontwikkelomgeving opgestart en wordt de logica van het programma geschreven. Om het programma erin te laden wordt de micro:bit verbonden met de PC of laptop waarmee het
+programma geschreven is. Dit gebeurt met een USB-kabel. Aan de zijde van de micro:bit is het een
+USB-micro verbinding.
+
+![example image](./images/m1.jpg "De USB connectie met de µBit")
+
+Stappenplan voor de pairing en connectie (moet maar 1 keer gebeuren):
+
+![example image](./images/m2.jpg "De USB connectie met de µBit")
+![example image](./images/m3.jpg "De USB connectie met de µBit")
+![example image](./images/m4.jpg "De USB connectie met de µBit")
+![example image](./images/m5.jpg "De USB connectie met de µBit")
+
+Nadien is het voldoende om de knop Downloaden te gebruiken om de geprogrammeerde code in de Micro:Bit te programmeren en die door de Micro:Bit te laten uitvoeren.
+
+
 ## Activity: De programmeeromgeving
 
 Er bestaan verschillende manieren om de Micro:Bit in de Python programmeertaal te programmeren. Dit kan via Visual Studio Code, dit moet je dan zelf downloaden en installeren op uw computer, maar er bestaat ook een online omgeving voor MicroPython voor de Micro:Bit. Op die manier hoef je niets te installeren op uw computer. Ga hiervoor naar de website : https://microbit.org/ en klik bovenaan op "Let's code" en kies op die pagina voor de link : Python editor.
@@ -907,9 +923,142 @@ Extra externe hardware kan gekoppeld worden via de pinnen van de Micro:Bit. Er z
 > - Een ingang zal gebruikt worden om door de microcontroller te worden gelezen, hierop zal dus één of andere vorm van sensor of detector worden aangesloten. Meest eenvoudige vorm van zoiets is een drukknop.
 > - Een uitgang zal gebruikt worden om door de microcontroller te worden aangestuurd, hierop zal dus één of andere vorm van actuator worden aangesloten. Meest eenvoudige vorm van zoiets is een LED.
 
+Om van meerdere pinnen gebruik te kunnen maken is er nood aan een GPIO-ADAPTOR. 
+
+![example image](./images/vmm004.jpg "Micro:Bit GPIO-ADAPTOR")
+
+Op een breadboard kan dan via draadjes verbindingen en schakelingen worden gebouwd. 
+
+![example image](./images/vtbb3.jpg "Breadboard")
+
+De doorverbindingen van het breadboard ziet er als volgt uit:
+
+![example image](./images/bb1.jpg "Doorverbindingen breadboard")
+
+### Een verkeerslicht bouwen
+
+Om een verkeerslicht te maken worden de drie uitgangen van de Micro:Bit gebruikt.
+
+![example image](./images/leds.png "Bedradingsdschema van verkeerslicht")
+
+Bij het bouwen van de schakeling moet je weten dat een led een positieve aansluiting (=anode)
+heeft en een negatieve aansluiting (=kathode). De Anode moet verbonden worden met de weerstanden.
+De aansluiting van de anode is langer dan de aansluiting van de kathode.
+De weerstanden hebben een waarde van 150Ω (=150 Ohm), 120Ω en 39Ω. Dit kan je zien aan de 4
+gekleurde bandjes waarvan de eerste drie banden de waarde voorstellen.
+De weerstandswaarde van de weerstand verbonden met de rode led is 150Ω (bruin, groen, bruin).
+De weerstandswaarde van de weerstand verbonden met de gele led is 39Ω (oranje, wit, zwart).
+De weerstandswaarde van de weerstand verbonden met de groene led is 120Ω (bruin, rood, bruin).
+
+De python code om een knipperled te programmeren ziet er als volgt uit (hier is de externe LED is aangesloten op pin1):
+
+```python
+# Imports go at the top
+from microbit import *
+
+# Code in a 'while True:' loop repeats forever
+while True:
+    pin1.write_digital(0)
+    sleep(1000)
+    pin1.write_digital(1)
+    sleep(1000)
+```
 
 
+> In vorige programma's hebben we de leds op de LED-matrix geprogrammeerd. Nu willen we een stap verder gaan door de externe pinnen P0, P1 en P2 aan te sturen waarmee de leds zijn verbonden. Als we zo een pin hoog maken (=1), wil dit zeggen dat er 3V op de pin geplaatst zal worden en die de aangesloten led zal doen branden. Als we zo een pin laag maken (=0), wil dit zeggen dat er 0V op de pin geplaatst zal worden en die de > aangesloten led niet zal doen branden.
 
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Bouw deze schakeling en programmeer de code zodat het rode licht 5 seconden brandt.
+Vervolgens moet het oranje of gele licht 2 seconden branden en tenslotte het groene licht 5 seconden. Laat het voorgaande continu herhalen.
+</p>
+</div>
+
+### De digitale ingang
+
+De werking van de digitale ingang wordt uitgelegd aan de hand van een drukknop.
+Aan een digitale ingang kunnen we sensoren aansluiten die de microcontroller gaat zeggen als er een spanning wel of niet aanwezig is.
+Een voorbeeld van een sensor die een digitale waarde geeft is een drukknop.
+
+![example image](./images/switch.png "Aansturen van een digitale ingang met een drukknop")
+
+Op de micro:bit zijn er twee drukknoppen aanwezig die gebruikt kunnen worden. De drukknoppen noemen A en B. Die werden reeds eerder gebruikt.
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Zorg dat de hardware van het verkeerslicht is aangesloten.
+Maak een programma dat het groene licht brandt voor 5 seconden als er op drukknop A wordt gedrukt. Als er op knop B wordt gedrukt moet het oranje licht branden voor 2 seconden en nadien het rode licht voor 5 seconden.
+</p>
+</div>
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord.
+We gaan in het programma voortdurend vergelijken of drukknop B ingedrukt wordt.
+Als er op drukknop B gedrukt wordt moet het groene licht branden voor 5 seconden, gevolgd door
+het oranje licht dat brandt gedurende 2 seconden.
+Als er niet op de drukknop B gedrukt wordt moet het rode licht branden.
+</p>
+</div>
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord. Maak een programma als er op drukknop A wordt gedrukt, het groene licht brandt voor 5 seconden. Als er NIET op drukknop A wordt gedrukt en als er op drukknop B wordt gedrukt moet het rode licht branden voor 5 seconden. Als er niet aan de beide voorwaarden wordt voldaan (= niet op drukknop A of B gedrukt wordt) moet het gele licht branden.
+</p>
+</div>
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord. Maak een programma als er op drukknop A wordt gedrukt het groene licht brandt voor 5 seconden. Als er NIET op drukknop A wordt gedrukt en als er op drukknop B wordt gedrukt, moet het rode licht branden voor 5 seconden. Als er niet aan de beide voorwaarden wordt voldaan (= niet op drukknop A of B wordt gedrukt) moet het oranje licht knipperen (500ms aan en 500ms uit).
+</p>
+</div>
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Gebruik het breadbord met het verkeerslicht. Maak een programma dat enkel het groene licht
+brandt als drukknop B niet is ingedrukt.
+</p>
+</div>
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord.
+Maak een programma door gebruik te maken van de geziene booleaanse operatoren.
+Als drukknop A is ingedrukt mag enkel de groene led branden.
+Als drukknop B is ingedrukt mag enkel de rode led branden.
+Als drukknop A en B is ingedrukt mag enkel de oranje led branden.
+Als geen enkele drukknop is ingedrukt dan mag er geen enkele led branden.
+</p>
+</div>
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Maak gebruik van het verkeerslicht op het breadbord.
+Maak een programma waarbij het oranje licht brandt als drukknop A of drukknop B is ingedrukt.
+Als er geen enkel drukknop is ingedrukt moet de oranje led uit zijn.
+De rode en groene led worden niet gebruikt.
+</p>
+</div>
+
+### De externe digitale ingang
+
+Tot nu toe hebben we altijd de drukknoppen gebruikt die op de micro:bit staan.
+Natuurlijk kan er extern ook een drukknop aangesloten worden.
+Een drukknop moet verbonden worden met een digitale ingang.
+Een drukknop kan op alle pinnen aangesloten worden.
+We gaan het verkeerslicht uitbreiden door een externe drukknop aan te sluiten op pin 8.
+
+![example image](./images/mb1.png "Aansturen van een digitale ingang met een drukknop")
+
+Voor het schema wordt een Pull-up weerstand gebruikt. Deze moet zeker geplaatst worden zodat de micro:bit niet defect zou geraken.
+De drukknop heeft twee toestanden. Als hij niet ingedrukt is leest de ingang een hoge spanning (linkse figuur). Als de knop ingedrukt is leest de ingang een lage spanning (rechtse figuur).
+Dit is een digitale sensor (=detector) omdat de drukknop maar twee toestanden kan weergeven, namelijk ingedrukt, aan, hoog of 1. De andere toestand is niet ingedrukt, uit, laag of 0.
+
+![example image](./images/drukknop1.png "Aansturen van een digitale ingang met een drukknop")
+
+Een reden waarom er een weerstand gebruikt wordt is omdat in beide schakelstanden de
+ingang aan een vast potentiaal moet hangen (0V of 3V). Aan een ingang waar geen pull-up gebruikt
+wordt zal in geopende stand een antenne vormen. Dit wil zeggen dat door storingen de
+microcontroller een hoge of een lage spanning kan zien wat een ongewenst gedrag van de
+microcontroller als gevolg heeft.
+
+![example image](./images/drukknop2.png "Aansturen van een digitale ingang met een drukknop")
+
+Dit zorgt voor volgend overzicht:
+
+![example image](./images/drukknop3.png "Aansturen van een digitale ingang met een drukknop")
 
 Have fun with Micro:Bit,
 Wim
