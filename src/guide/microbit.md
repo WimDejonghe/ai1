@@ -1,3 +1,8 @@
+---
+mathjax:
+  presets: '\def\lr#1#2#3{\left#1#2\right#3}'
+---
+
 # Micro:Bit
 
 ![example image](./images/bbc-microbit-microbit-v22.png "An exemplary image")
