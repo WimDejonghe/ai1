@@ -53,7 +53,7 @@ Nadien is het voldoende om de knop: "Stuur naar micro:bit" te gebruiken om de ge
 
 ## MicroPython code
 
-Initialisatie : Omdat we werken met een Micro:bit moeten we dit steeds aangeven bovenaan de code.  Importeer steeds (*) om (bijna) alle (hardware)mogelijkheden van de Micro:Bit te gebruiken. Doe dit door bovenaan in de Python code te schrijven :
+**Initialisatie** : Omdat we werken met een Micro:bit moeten we dit steeds aangeven bovenaan de code.  Importeer steeds (*) om (bijna) alle (hardware)mogelijkheden van de Micro:Bit te gebruiken. Doe dit door bovenaan in de Python code te schrijven :
 
 ```python
 from microbit import *
@@ -207,7 +207,7 @@ while True:
 ```
 
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
-<p style="color:lightgreen; margin:10px">Opdracht: Zet eens de variabele wacht_tijd op waarde 0. Wat gebeurt er?</br>
+<p style="color:lightgreen; margin:10px">Experimenteer: Zet eens de variabele wacht_tijd op waarde 0. Wat gebeurt er?</br>
 Laat de “sleep“ eens weg. Wat gebeurt er?
 </p>
 </div>
@@ -308,7 +308,7 @@ Binnen de oneindige WHILE-loop kan er steeds nagegaan worden of een drukknop is 
 
 Binnen de MicroPython van de Micro:Bit kan gebruik gemaakt worden van:
 
-**WAS_pressed**: statements worden slechts één keer uitgevoerd (ook bij blijvend drukken).
+**WAS_pressed**: statements worden slechts één keer uitgevoerd (ook bij blijvend drukken).</br>
 **IS_pressed**: statements worden meerdere keren uitgevoerd bij blijvend drukken.
 
 ![example image](./images/if.png "Het IF statement met een conditie")
@@ -326,7 +326,7 @@ Blijf eens op een knop drukken om het verschil te zien in voorgaande.
 :::
 
 
-Een IF-statement werkt heel veel samen met vergelijkingsoperatoren.
+Een IF-statement werkt altijd samen met vergelijkingsoperatoren.
 
 ### Vergelijkingsoperatoren
 
@@ -383,8 +383,8 @@ while True:
 ```
 
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
-<p style="color:lightgreen; margin:10px">Programmeer een tafel van vermenigvuldiging.
-Programmeer een toepassing waarbij je met A een teller tot een bepaalde waarde brengt. Door dan op B te drukken laat je een lichtje zoveel keer knipperen.
+<p style="color:lightgreen; margin:10px">Opdracht: Programmeer een tafel van vermenigvuldiging. Telkens je op A drukt wordt de vermenigvuldig factor met 1 verhoogd.
+Uitbreiding: Programmeer een toepassing waarbij je met A een teller tot een bepaalde waarde brengt. Door dan op B te drukken laat je een lichtje zoveel keer knipperen.
 </p>
 </div>
 
@@ -463,7 +463,7 @@ while True:
 ```
 
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
-<p style="color:lightgreen; margin:10px">Analyseer de werking en programmeer nog andere sequenties.
+<p style="color:lightgreen; margin:10px">Analyseer:  de werking en programmeer nog andere sequenties.
 </p>
 </div>
 
@@ -1065,7 +1065,7 @@ Dit zorgt voor volgend overzicht:
 
 ![example image](./images/drukknop3.png "Aansturen van een digitale ingang met een drukknop")
 
-Een goede technicus zal na het bouwen altijd meten of de hardware wel juist werkt. Dit kan best met een Multimeter op de stand Vdc. Hiermee wordt een gelijkspanning gemeten. 
+Een goede technicus zal na het bouwen altijd meten of de hardware wel juist werkt. Dit kan best met een multimeter op de stand Vdc. Hiermee wordt een gelijkspanning gemeten. 
 
 ![example image](./images/switch1.png "Werking drukknop uitemeten met een multimeter")
 
@@ -1093,10 +1093,12 @@ from microbit import *
 while True:
     #werkt met een externe pull-up weerstand
     if pin1.read_digital() == False:
-       display.show(1)
+       display.show(1)  #getoond als pin1 = 0v
+    else:
+      display.clear() #clear scherm als pin1 = 3v
     #werkt met een interne pull-up weerstand
     if pin0.is_touched():
-       display.show(0)
+       display.show(0)  #getoond als pin0 = 0v
 
 ```
 
@@ -1107,6 +1109,53 @@ while True:
 
 ### Analoge ingangen
 
+Microcontrollers worden vaak gebruikt als interface om analoge signalen om te zetten naar een digitale waarde. Zij moeten in staat zijn om analoge ingangssignalen, bijvoorbeeld van een microfoon of temperatuursensor, om te zetten in digitale gegevens. Pinnen op de micrp:bit kunnen niet alleen als digitale GPIO fungeren, maar ze zijn in staat om ook analoge spanningen binnen te lezen. Intern in de microcontroller wordt dan gebruik gemaakt van een ADC (analoog naar digitaal converter). 
+
+Een analoog naar digitaal convertor (ADC) is een elektronische schakeling waarvan de waarde van de uitgang recht evenredig is met het analoge  ingangssignaal. De ADC meet de ingangsspanning en geeft een binaire waarde aan de uitgang evenredig met de ingangsspanning. Het ingangsbereik van de ADC wordt bepaald door een referentie spanning (Vref). Bij de meeste controllers wordt hier de voedingsspanning gebruikt.
+
+![example image](./images/adc1.png "Analoog naar digitaal converter (ADC)")
+
+De conversie wordt gestart door de digitale ingang SC (Start conversion) hoog te maken. De conversie duurt een tijdje. Als de conversie volbracht is wordt de digitale EOC (End of conversion) uitgang hoog gemaakt. Vanaf dat de digitale ingang OE (Output Enable) hoog gemaakt wordt zal de digitale waarde op een data-bus worden geplaatst.
+
+In de volgende figuur wordt er een 3 bit conversie gedaan van het analoog signaal. Men krijgt hier de typische trapfunctie met hier 8 treden. Met 3 bit verdeelt men het bereik in 23 = 8 stappen.
+
+![example image](./images/adc2.png "Principe van een 3-bit ADC conversie")
+
+De hoogste digitale waarde aan de uitgang komt overeen met de referentiespanning, die de maximum spanning is aan de ingang.
+
+**Resolutie en afwijking**
+
+Door een analoog signaal om te zetten in een digitaal signaal benaderen we bijna het werkelijk verloop, aangezien elke digitale uitgangswaarde een zeer klein bereik van analoge ingangsspanningen moet vertegenwoordigen, d.w.z. de breedte van een van de treden op de ‘trap’ n.
+
+Als we een analoog signaal met een bereik van 0V tot 3,3V willen omzetten naar een 8-bits digitaal signaal, dan zijn er 256 (d.w.z. 2<sup>8</sup>) verschillende uitgangswaarden. Elke trap heeft een breedte van: $$ {3,3V \over 256} = 12,89mV $$ met de grootste afwijking is de helft van één stap: $$ {12,89mV \over 2} = 6,45mV $$
+
+De micro:bit gebruikt een 10 bit ADC, dan zijn er 1024 (d.w.z. 2<sup>10</sup>) verschillende uitgangswaarden. Elke trap heeft een breedte van: $$ {3,3V \over 1024} = 3,22mV $$ met de grootste afwijking is de helft van één stap: $$ {3,22mV \over 2} = 1,611mV $$
+
+**Sampling frequentie**
+
+Bij het omzetten van een analoog signaal naar digitaal signalen nemen we herhaaldelijk een 'sample' en kwantificeren dit tot de nauwkeurigheid die de resolutie van onze ADC aangeeft. Hoe meer monsters er worden genomen, hoe nauwkeuriger de digitale gegevens zijn. Monsters of samples worden normaal gesproken op vaste tijdstippen genomen (d.w.z. bv. om de 0,2 ms) en bepalen de bemonsteringsfrequentie (het aantal monsters dat per seconde wordt genomen). De bemonsteringsfrequentie moet worden gekozen in verhouding tot de snelheid waarmee de bemonsterde gegevens veranderen. Als de samplefrequentie te laag is, is het mogelijk dat snelle veranderingen in het analoge signaal niet duidelijk zijn in het resulterende digitale signaal.
+Daarom stelt het Nyquist-bemonsteringscriterium dat de bemonsteringsfrequentie ten minste het dubbele moet zijn van de hoogste frequentie van het ingangssignaal.
+
+![example image](./images/sampling.png "Het sampelen van een analoog signaal")
+
+De volgende code bezit een sampletijd van 100 milliseconden, dus is de sample frequentie = $$ {1 \over 100ms} = 10Hz $$.
+
+```python
+# Imports go at the top
+from microbit import *
+
+# Code in a 'while True:' loop repeats forever
+while True:
+    waarde = pin1.read_analog()
+    print('De ingelezen analoge waarde op pin P1 = ', str(waarde))
+    sleep(100)
+```
+
+Het meest eenvoudige component om een analoge spanning te maken is een potentiometer. Dit is een regelbare weerstand, die bezit 3 aansluitklemmen. De vaste weerstand van de potentiometer wordt aangesloten op de voedingsspanning (0V & 3V). De derde pin, die de loper wordt genoemd bevat een variabele spanning tov de 0V. 
+
+Het schema ziet er als volgt uit:
+
+![example image](./images/pot.png "Aansluiting van een potentiometer op een analoge ingang van de microcontroller")
 
 
 ### PWM uitgangen
