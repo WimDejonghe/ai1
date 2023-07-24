@@ -17,25 +17,12 @@ De Micro:Bit kan in verschillende talen worden geprogrammeerd. De meest gebruikt
 
 ![example image](./images/mb_hardware.png "De hardware van de µBit")
 
-De Micro:Bit wordt via een USB-kabel verbonden met de computer. Op die computer wordt de software ontwikkelomgeving opgestart en wordt de logica van het programma geschreven. Om het programma erin te laden wordt de micro:bit verbonden met de PC of laptop waarmee het
-programma geschreven is. Dit gebeurt met een USB-kabel. Aan de zijde van de micro:bit is het een
-USB-micro verbinding.
-
-![example image](./images/m1.jpg "De USB connectie met de µBit")
-
-Stappenplan voor de pairing en connectie (moet maar 1 keer gebeuren):
-
-![example image](./images/m2.jpg "De USB connectie met de µBit")
-![example image](./images/m3.jpg "De USB connectie met de µBit")
-![example image](./images/m4.jpg "De USB connectie met de µBit")
-![example image](./images/m5.jpg "De USB connectie met de µBit")
-
-Nadien is het voldoende om de knop Downloaden te gebruiken om de geprogrammeerde code in de Micro:Bit te programmeren en die door de Micro:Bit te laten uitvoeren.
-
 
 ## Activity: De programmeeromgeving
 
 Er bestaan verschillende manieren om de Micro:Bit in de Python programmeertaal te programmeren. Dit kan via Visual Studio Code, dit moet je dan zelf downloaden en installeren op uw computer, maar er bestaat ook een online omgeving voor MicroPython voor de Micro:Bit. Op die manier hoef je niets te installeren op uw computer. Ga hiervoor naar de website : https://microbit.org/ en klik bovenaan op "Let's code" en kies op die pagina voor de link : Python editor.
+
+![example image](./images/link.png "Start de online (Micro)Python programmeeromgeving.")
 
 ![example image](./images/microbitorg.png "De online programmeeromgeving die MicroPython ondersteunt.")
 
@@ -45,6 +32,24 @@ Herken hierop:
   <li>Simulator</li>
   <li>Programmeer Python code zone</li>
 </ol>
+
+## Eerste keer connectie tussen Micro:Bit en de computer
+
+De Micro:Bit wordt via een USB-kabel verbonden met de computer. Op die computer wordt de software ontwikkelomgeving opgestart en wordt de logica van het programma geschreven. Om het programma erin te laden wordt de micro:bit verbonden met de PC of laptop waarmee het
+programma geschreven is. Dit gebeurt met een USB-kabel. Aan de zijde van de micro:bit is het een
+USB-micro verbinding.
+
+![example image](./images/m1.jpg "De USB connectie met de µBit")
+
+Stappenplan voor de pairing en connectie (moet maar 1 keer gebeuren): Klik op de drie bolletjes naast de knop: "Stuur naar micro:bit" en klik op "Verbinden"
+
+![example image](./images/m1.png "De USB connectie met de µBit")
+![example image](./images/m2.png "De USB connectie met de µBit")
+![example image](./images/m3.png "De USB connectie met de µBit")
+![example image](./images/m4.png "De USB connectie met de µBit")
+![example image](./images/m5.png "De USB connectie met de µBit")
+
+Nadien is het voldoende om de knop: "Stuur naar micro:bit" te gebruiken om de geprogrammeerde code in de Micro:Bit te programmeren en die door de Micro:Bit te laten uitvoeren.
 
 ## MicroPython code
 
