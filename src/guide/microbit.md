@@ -1165,8 +1165,73 @@ Het schema ziet er als volgt uit:
 
 ### PWM uitgangen
 
-### Aansturen van servo motoren
+PWM is de afkorting van Pulse With Modulation. In het Nederlands heet dit Puls breedte modulatie of beter puls breedte sturing.
+Puls breedte modulatie is een eenvoudige methode om op een digitale uitgang een blokgolfspanning te voorzien om zo een semi-analoge spanning op de uitgang te krijgen.
+In volgende figuur wordt de helft van de tijd de uitgang hoog gemaakt en de andere helft van de tijd de uitgang laag. Dit wil zeggen dat de gemiddelde spanning op de uitgang gelijk wordt aan de helft van de voedingsspanning. In deze figuur is dit de helft van 3,3V gelijk aan 1,65V.
 
+![example image](./images/pwm1.png "Een gemiddelde spanning van 50% van de voedingsspanning")
+
+Door de frequentie van de blokgolfspanning groot te nemen wordt dit bij het aansturen van verlichting (LED's) door het menselijk oog niet gezien als een knipperende verlichting (door de traagheid van het oog) maar als een gedimde verlichting. Bij DC-motoren zal dit ook niet leiden tot een schokkerig draaien maar als het trager draaien van de motor (door de inertie van de rotor van de motor).
+Men noemt de duty-cycle de verhouding van de aan-tijd (Ton) van het signaal ten opzichte van de volledige tijd van de periode (Ton+Toff), uitgedrukt in procent.
+
+$$  \delta = {Ton \over T} * 100\%  = 50\% $$
+
+
+Als je de duty-cycle vermenigvuldigd met de voedingsspanning dan bekom je de gemiddelde uitgangsspanning.
+
+$$  Uogem = \delta * Uv  = 3,3V * 50\% = 1,65V $$
+
+PWM-besturing wordt gebruikt in een verscheidenheid aan toepassingen, variërend van communicatie tot automatische besturing. Het dimmen van ledverlichting tot het toerental regelen van een DC-motor, … .
+
+Ook servo motoren maken gebruik van een soort PWM signaal (vaste frequentie met beperkt duty-cycle gebied).
+
+De periode (=T) wordt normaal gesproken constant gehouden, en de puls breedte, of "aan" tijd (=Ton) wordt gevarieerd.
+
+In volgende figuren zijn enkele voorbeelden van PWM-signalen weergegeven.
+
+![example image](./images/pwm2.png "Enkele voorbeelden van PWM-signalen.")
+
+Bij de micro:bit kunnen pinnen worden ingesteld en aangestuurd worden als digitale PWM output pinnen. In de software kan dit als volgt: 
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Koppel extern een LED met voorschakelweerstand op een pin van de micro:bit. Regel de lichtsterkte van de LED via een PWM signaal. Visualiseer met een oscilloscoop het signaal. </br>
+Uitbreiding : Regel de helderheid van de LED via een potentiometer.
+</p>
+</div>
+
+### Aansturen van servomotoren
+
+Een normale servomotor is een motor die we kunnen laten draaien tussen een hoek van 0° en 180°. Er bestaan ook 360° servo motoren, die kunnen dan volledige toeren draaien en dus continu blijven draaien.
+De servomotor heeft drie aansluitingen. Twee aansluitingen zijn voor de voedingsspanning en een derde aansluiting dient om een PWM-signaal
+aan te sluiten. Afhankelijk van het PWM-signaal zal de motor draaien tussen de 0° en de 180° en alle waarden er tussenin.
+
+![example image](./images/servo1.png "Signalen voor een servo motor")
+
+
+De frequentie van het PWM signaal is 50Hz. De periode bedraagt dan 20ms 
+
+$$  T = {1 \over f}  $$
+
+Als de breedte van de puls gelijk is aan 1,25ms dan is de hoek 0°.
+Als de breedte van de puls gelijk is aan 1,75ms dan is de hoek 180°.
+
+![example image](./images/servo2.png "Periode en pulsbreedte servomotor")
+
+Bij 0° is de pulsbreedte 1,25ms en de periode 20ms.
+
+$$  \delta = {Ton \over T} * 100\%  = {1,25ms \over 20ms} * 100\% = 6,25\% $$
+
+Bij 90° is de pulsbreedte 1,50ms en de periode 20ms.
+
+$$  \delta = {Ton \over T} * 100\%  = {1,50ms \over 20ms} * 100\% = 7,5\% $$
+
+
+Bij 180° is de pulsbreedte 1,75ms en de periode 20ms.
+
+$$  \delta = {Ton \over T} * 100\%  = {1,75ms \over 20ms} * 100\% = 8,75\% $$
+
+
+Omdat servomotoren heel veel gebrukt worden bij microcontrollers, en dus ook bij de micro:bit, bezit de micro:bit een speciale bibliotheek die is ontworpen om het gebruik van een servomotoren zo eenvoudig mogelijk te maken. Deze bibliotheek kan gevonden worden door: ............... 
 
 
 
