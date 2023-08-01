@@ -1160,7 +1160,7 @@ Het meest eenvoudige component om een analoge spanning te maken is een potentiom
 
 Het schema ziet er als volgt uit:
 
-![example image](./images/pot.png "Aansluiting van een potentiometer op een analoge ingang van de microcontroller")
+![example image](./images/analog_in.png "Aansluiting van een potentiometer op een analoge ingang van de microcontroller")
 
 
 ### PWM uitgangen
@@ -1192,6 +1192,28 @@ In volgende figuren zijn enkele voorbeelden van PWM-signalen weergegeven.
 ![example image](./images/pwm2.png "Enkele voorbeelden van PWM-signalen.")
 
 Bij de micro:bit kunnen pinnen worden ingesteld en aangestuurd worden als digitale PWM output pinnen. In de software kan dit als volgt: 
+
+```python
+# Imports go at the top
+from microbit import *
+
+pin0.set_analog_period(20)#instellen van de frequentie van PWM in milliseconden (min 1)
+#pin0.set_analog_period_microseconds(1000) #instellen van de frequentie van PWM in microseconden (min 256)
+pin0.write_analog(512)#0-1023 = 0%-100% duty cycle (hier 50%)
+
+# Code in a 'while True:' loop repeats forever
+while True:
+   for i in range(1023):  
+    pin0.write_analog(i)#0-1023 = 0%-100% duty cycle
+    sleep(100)
+
+```
+
+Zoals je in vorig voorbeeld ziet wordt pin P0 gebrukt als PWM output kanaal. Er wordt een periode ingesteld van 20 ms, wat dus een frequentie is van 50Hz. Het knipperen van een LED zal hierbij niet zichtbaar zijn. Bij een lagere frequentie zou dit wel al zichtbaar moeten zijn, wat natuurlijk niet gewenst is. Instellen van de periode moet maar 1 keer gebeuren, vandaar dat dit statement voor de WhileTrue loop staat. 
+
+Daarna wordt 1 keer de duty cycle ingesteld op 50%. In de WhileTrue loop zal de duty cycle in 1024 stappen geregeld worden van 0% naar 100%.
+
+Indien gewenst bij nog hogere frequentie, zou de periode van het PWM signaal ook kunnen worden uitgedrukt in microseconden. 
 
 <div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
 <p style="color:lightgreen; margin:10px">Opdracht: Koppel extern een LED met voorschakelweerstand op een pin van de micro:bit. Regel de lichtsterkte van de LED via een PWM signaal. Visualiseer met een oscilloscoop het signaal. </br>
@@ -1231,8 +1253,33 @@ Bij 180° is de pulsbreedte 1,75ms en de periode 20ms.
 $$  \delta = {Ton \over T} * 100\%  = {1,75ms \over 20ms} * 100\% = 8,75\% $$
 
 
-Omdat servomotoren heel veel gebrukt worden bij microcontrollers, en dus ook bij de micro:bit, bezit de micro:bit een speciale bibliotheek die is ontworpen om het gebruik van een servomotoren zo eenvoudig mogelijk te maken. Deze bibliotheek kan gevonden worden door: ............... 
+Omdat servomotoren heel veel gebrukt worden bij microcontrollers zijn er soms speciale bibliotheek ontworpen om het gebruik van een servomotoren zo eenvoudig mogelijk te maken. Bij de micro:bit kunnen we gewoon gebruik maken van de kennis van PWM om die motor aan te sturen. Voorbeeld code zou het volgende kunnen zijn:
 
+```python
+# Imports go at the top
+from microbit import *
+
+# Servo control: 
+# 50 = ~1 millisecond pulse all right 
+# 75 = ~1.5 millisecond pulse center 
+# 100 = ~2.0 millisecond pulse all left 
+pin0.set_analog_period(20)
+
+while True: 
+	pin0.write_analog(75)
+	sleep(1000)
+	pin0.write_analog(25)
+	sleep(1000)
+	pin0.write_analog(125)
+	sleep(1000)
+
+```
+
+
+<div style="background-color:darkgreen; text-align:left; vertical-align:left; padding:15px;">
+<p style="color:lightgreen; margin:10px">Opdracht: Koppel extern een servomotor op een pin van de micro:bit. Regel de positie van de servomotor via een PWM signaal door de waarde van een aangesloten potentiometer in te lezen. Visualiseer met een oscilloscoop het signaal.
+</p>
+</div>
 
 
 Have fun with Micro:Bit,
