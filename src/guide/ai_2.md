@@ -61,7 +61,13 @@ Hiervoor gebruiken we een online platform van Google. Dit platform voorziet lege
 
 <https://teachablemachine.withgoogle.com/>
 
+![example image](./images/tm0.png "Teachable Machine")
+
 Je hebt hiervoor een Google-account nodig. Log met die account in op 'Teachable Machine'. Nu kan je kiezen wat voor soort train-, test- en verwerk data je wenst te gebruiken. 
+
+Klik op de knop "Aan de slag"
+
+
 
 ## Beelden classificeren
 
@@ -73,9 +79,21 @@ De gemaakte beelden zijn onmiddelijk in drie klasses gestopt volgens inhoud van 
 <li>klasse0 : beelden zonder zichtbare duim (of iets die niet klasse1 en niet klasse2 is)</li>
 </ul>
 
+![example image](./images/tm1.png "Teachable Machine")
+
+![example image](./images/tm2.png "Teachable Machine")
+
+![example image](./images/tm3.png "Teachable Machine")
+
+![example image](./images/tm4.png "Teachable Machine")
+
 ## Neuraal netwerk trainen
 
+![example image](./images/tm5.png "Teachable Machine")
+
 Na het train proces kan er op de website onmidellijk worden getest met nieuwe data (nieuwe beelden). Ga hier na of in alle omstandigheden het neuraal netwerk goed reageert en classificeert. Indien dit niet ok is kan er opnieuw worden getraind met nieuwe / extra data. 
+
+![example image](./images/tm6.png "Teachable Machine")
 
 Eenmaal dit goed bevonden, kan dit worden opgeslagen in uw Google account. Dit is handig als er achteraf toch nog nieuwe trainingsdata zou moeten bijkomen. Je kan verschillende van die getrainde NN op de website opslaan.
 
@@ -84,7 +102,30 @@ Eenmaal dit goed bevonden, kan dit worden opgeslagen in uw Google account. Dit i
 
 Het volledige getraind neuraal netwerk kan nu als bestand worden gedownload. Let wel, niet alle getrainde fotodata is hierin opgeslagen. Wel de herkende patronen die het NN toelaten om er een classificatie van te maken. Vandaar dat dit bestand niet zo groot is als je op eerste zicht zou verwachten.
 
-Er zijn verschillende manieren om van dit NN een bestand te maken. Het Google model die hier gebruikt wordt is een Keras model van Tensorflow. Tensorflow is een Google onderdeel die zich specialiseert in AI. Op de website kunnen we dit NN als een keras model van Tensorflow downloaden. Dit levert een 'keras_model.h5' bestand op die we ergens op de lokale computer kunnen downloaden. Het volledige getrainde NN zit vervat in dit bestand.
+Klik op Model exporteren
+
+![example image](./images/tm7.png "Teachable Machine")
+
+Er zijn verschillende manieren om van dit NN een bestand te maken. Het Google model die hier gebruikt wordt is een Keras model van Tensorflow. Tensorflow is een Google onderdeel die zich specialiseert in AI. Op de website kunnen we dit NN als een keras model van Tensorflow downloaden. 
+
+Klik hiervoor op het middelste tabblad "Tensorflow" en zet de radiobutton op Keras.
+
+![example image](./images/tm8.png "Teachable Machine")
+
+Klik nu op de knop "Mijn model downloaden". Teachable Machine zal het model converteren naar een Keras model en het inpakken in een ZIP bestand.
+
+![example image](./images/tm9.png "Teachable Machine")
+
+Dit levert een ZIP bestand (converted_keras.zip) op dat je op uw lokale computer kan bewaren en uitpakken.
+
+![example image](./images/tm10.png "Teachable Machine")
+
+In het ZIP bestand zitten twee bestanden:
+
+![example image](./images/tm11.png "Teachable Machine")
+
+Het ene bestand is het NN 'keras_model.h5' bestand. Het volledige getrainde NN zit vervat in dit bestand.
+Het andere bestand "labels.txt" bevat enkel de namen van de klasses.
 
 
 ## Python script schrijven
@@ -100,6 +141,8 @@ Nu moet er op de lokale computer een Python script wordt geschreven die volgende
 </ol>
 
 Hiervoor wordt best gebruik gemaakt van een Python IDE (ontwikkelomgeving). Er wordt hier gebruik gemaakt van Spyder. Dit wordt best geïnstalleerd onder het pakket van Anaconda.
+
+![example image](./images/ana.png "Installer Anaconda")
 
 Ga naar de website van Anaconda en download de installer van Anaconda. Na het downloaden voer de installer uit:
 
@@ -135,7 +178,7 @@ Sluit Spyder en Anaconda volledige af en start de Navigator opnieuw met Administ
 
 ### Installatie van OpenCV voor Anaconda
 
-OpenCV is een Python blibliotheek die het programma in staat stelt om de webcam van de computer te gebruiken. Dit is trouwens nodig om nieuwe beelden te kunnen aanbieden aan het NN.
+OpenCV is een Python bibliotheek die het programma in staat stelt om de webcam van de computer te gebruiken. Dit is trouwens nodig om nieuwe beelden te kunnen aanbieden aan het NN.
 
 Start CMD.exe Prompt binnen Anaconda op:
 
@@ -151,7 +194,7 @@ Start CMD.exe Prompt binnen Anaconda op:
 
  ### Install Tensorflow in Anaconda
 
- Om een Keras model van Tensorflow te kunnen gebruiken moet ook hiervoor een blibliotheek op de computer worden geïnstalleerd. Doe dit ook in de CMD.exe Prompt binnen Anaconda navigator (opnieuw met administrator rechten) :
+ Om een Keras model van Tensorflow te kunnen gebruiken moet ook hiervoor een bibliotheek op de computer worden geïnstalleerd. Doe dit ook in de CMD.exe Prompt binnen Anaconda navigator (opnieuw met administrator rechten) :
 
 ```prompt
  conda create -n tf tensorflow
@@ -174,6 +217,6 @@ Activeer deze bibliotheken met het commando:
 
 ![example image](./images/ana16.png "Installer Anaconda")
 
-Voila, de computer is klaar om een python script te schrijven en te testen.
+Voila, de computer is klaar om een python script, met daarin het gebruik van een Keras Tensorflow AI Neuraal Netwerk bestand en via Opencv kan het script de webcam gebruiken, te schrijven en te testen.
 
 
