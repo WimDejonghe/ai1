@@ -1282,6 +1282,9 @@ while True:
 </div>
 
 
+<hr>
+
+
 Have fun with Micro:Bit,
 Wim
 
