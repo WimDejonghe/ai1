@@ -303,7 +303,7 @@ Om dit te kunnen doen moeten we de COM-poort nummer kennen waarmee de micro:bit 
 
 Dit kan je controleren via het Configuratie scherm van de computer. (Hardware en geluiden => Apparaatbeheer => Poorten (COM&LPT)).
 
-In volgend voorbeeld is de micro:bit verbonden via COM23.
+In volgend voorbeeld is de micro:bit verbonden via COM15.
 
 Het python script ziet er dan als volgt uit:
 

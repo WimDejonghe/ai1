@@ -1284,6 +1284,11 @@ while True:
 
 <hr>
 
+::: tip
+Wens je je nog te verdiepen in python en de micro:bit. Maak dan volgende opdrachten via deze link:
+[An Internal Link](microbit_oef)
+:::
+
 
 Have fun with Micro:Bit,
 Wim
