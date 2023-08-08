@@ -1286,7 +1286,7 @@ while True:
 
 ::: tip
 Wens je je nog te verdiepen in python en de micro:bit. Maak dan volgende opdrachten via deze link:
-[An Internal Link](microbit_oef.md)
+[Extra opdrachten met de micro:bit en python](microbit_oef.md)
 :::
 
 

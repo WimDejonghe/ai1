@@ -2,13 +2,13 @@
 
 ## Intro
 
-Hier zal gebruik gemaakt worden van AI om een servomotor op de micro:bit aan te sturen. Er zal eerst een neuraal netwerk getrained worden met beelden. Beelden die we verzamelen via de webcam van de computer. Hoe meer beelden we nemen, hoe preciezer het neuraal netwerk zal werken. Binnen het neuraal netwerk (NN) zullen we een aantal klasse's opnemen (classificatie). Hoeveel klasses je nodig hebt hangt af van de toepassing. De aangeboden train beelden zullen we zelf toekennen aan een klasse. We werken hier dus met een **Supervised learning AI model** werken. De data geven we aan het NN en bij die data zeggen we (per beeld hier) het NN tot welk een klasse de data behoort. 
+Hier zal gebruik gemaakt worden van AI om een servomotor op de micro:bit aan te sturen. Er zal eerst een neuraal netwerk getraind worden met beelden. Beelden die we verzamelen via de webcam van de computer. Hoe meer beelden we nemen, hoe preciezer het neuraal netwerk zal werken. Binnen het neuraal netwerk (NN) zullen we een aantal klasse's opnemen (classificatie). Hoeveel klasses je nodig hebt hangt af van de toepassing. De aangeboden train beelden zullen we zelf toekennen aan een klasse. We werken hier dus met een **Supervised learning AI model** werken. De data geven we aan het NN en bij die data zeggen we (per beeld hier) het NN tot welk een klasse de data behoort. 
 
 Het neuraal netwerk (NN) zal patronen zoeken en onderscheiden die specifiek zijn voor een bepaalde klasse.
 
-Eenmaal het neuraal netwerk getrained is kunnen we dan een nieuw beeld aanbieden aan het NN die dan een beoordeling zal maken en een procentuele kanswaarde zal genereren voor iedere klasse. De hoogste procentuele waarde zal bepalend zijn om het beeld tot die klasse onder te brengen. Let wel het nieuwe beeld levert geen meerwaarde aan het leerproces van het NN. Indien er geen voldoening is door de gebruiker dringt zich een nieuwe leerfase op met betere/meer traindata. 
+Eenmaal het neuraal netwerk getraind is kunnen we dan een nieuw beeld aanbieden aan het NN die dan een beoordeling zal maken en een procentuele kanswaarde zal genereren voor iedere klasse. De hoogste procentuele waarde zal bepalend zijn om het beeld tot die klasse onder te brengen. Let wel het nieuwe beeld levert geen meerwaarde aan het leerproces van het NN. Indien er geen voldoening is door de gebruiker dringt zich een nieuwe leerfase op met betere/meer traindata. 
 
-Het is dus duidelijk dat we zelf het NN niet zullen bouwen, maar we gebruiken een leeg bestaand NN om met onze specifieke data dit NN te trainen volgens onze toepassing. Wil je een nieuwe toepassing, dan kan je dit opnieuw doen met andere data.
+> Het is dus duidelijk dat we zelf het NN niet zullen bouwen, maar we gebruiken een leeg bestaand NN om met onze specifieke data dit NN te trainen volgens onze toepassing. Wil je een nieuwe toepassing, dan kan je dit opnieuw doen met andere data.
 
 Eenmaal we tevreden zijn van het getrainde NN (we zullen het ook testen, wat ook een belangrijke stap is in het gebruik van AI) gaan we dit volledige NN downloaden als een bestand op onze computer. Aan dit bestand kunnen we dan nieuwe data aanbieden, waarop het NN dan zijn werk zal doen en een output (procentuele classificatie).
 
@@ -292,12 +292,12 @@ Met dit script, die van Teachable Machine afkomstig is, kan al onmiddelijk worde
 
 ![example image](./images/spyder1.png "Spyder console")
 
-We bemerken, hier in dit voorbeeld, dat er 4 klasses zijn. Het neuraal netwerk geeft voor iedere klasse een waarde (tussen 0 en 1). De eerste klasse krijgt een score van 0,16 de twee 0,79 de derde 0,00 en de vierde 0,04. Hieruit blijkt dat het neuraal netwerk klasse 2 beschouwt als grootste kanshebber van de nieuwe data. De confidence score voor klasse2 is dus 79%. Het NN denkt voor 79% zekerheidskans dat het klasse2 gaat. Het NN geeft dus patronen herkent die voor 79% overeen komt met getrainde patronen voor klasse2. De naam van die klasse kan gehaald worden uit labels.txt (hier dus blijkbaar "Left").
+We bemerken, hier in dit voorbeeld, dat er 4 klasses zijn. Het neuraal netwerk geeft voor iedere klasse een waarde (tussen 0 en 1). De eerste klasse krijgt een score van 0,16 de twee 0,79 de derde 0,00 en de vierde 0,04. Hieruit blijkt dat het neuraal netwerk klasse 2 beschouwt als grootste kanshebber van de nieuwe data. De confidence score voor klasse2 is dus 79%. Het NN denkt voor 79% zekerheidskans dat het nieuwe beeld tot klasse2 behoort. Het NN geeft dus patronen herkent die voor 79% overeen komt met getrainde patronen voor klasse2. De naam van die klasse kan gehaald worden uit labels.txt (hier dus blijkbaar "Left").
 
 
 ## Python script met micro:bit
 
-Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek character door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een 0 of 1 of 2 door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
+Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek character door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een '0' of '1' of '2' door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
 
 Om dit te kunnen doen moeten we de COM-poort nummer kennen waarmee de micro:bit is verbonden met de computer. Dit kan telkens anders zijn!!
 
@@ -397,7 +397,7 @@ cv2.destroyAllWindows()
 ```
 
 
-## Micro:bit script
+## Micro:bit software code
 
 Natuurlijk moet er dan nog op de micro:bit ook code draaien die deze characters kan binnenlezen en op basis daarvan een servomotor kan aansturen (theorie en praktijk, zie gedeelte micro:bit).
 

@@ -78,3 +78,8 @@ Hier kan de geïnteresseerde uitbreidingsopdrachten terug vinden. Deze laat de g
 </p>
 </div>
 <hr>
+
+::: tip
+Keer terug naar de cursus:
+[Micro:Bit](microbit.md)
+:::
