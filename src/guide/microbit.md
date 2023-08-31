@@ -1182,6 +1182,7 @@ Men noemt de duty-cycle de verhouding van de aan-tijd (Ton) van het signaal ten 
 
 $\delta = {Ton \over T} * 100\%  = 50\%$
 
+$\delta = \frac{T_{on}} {T}.100\%$
 
 Als je de duty-cycle vermenigvuldigd met de voedingsspanning dan bekom je de gemiddelde uitgangsspanning.
 
