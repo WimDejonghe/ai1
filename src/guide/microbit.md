@@ -483,12 +483,12 @@ Dwz, als de parameters integer waarden zijn , dan zal de computer de bewerking o
 :::
 
 Is echter een parameter een float dan zal de computer een complexere berekening uitvoeren en zal het resultaat ook een float zijn.
-Met deze redenering is er echter een probleem bij de deling / . Twee integer waarden delen zal steeds een integer opleveren. Dit kan dus tot een onvolledige deling leiden. Vb:</br>
-10/5 = 2</br>
-5/2=2 !!!! volledig behandeld met integers</br>
+Met deze redenering is er echter een probleem bij de deling / . Twee integer waarden delen zal steeds een integer opleveren. Dit kan dus tot een onvolledige deling leiden. Vb:<br>
+10/5 = 2<br>
+5/2=2 !!!! volledig behandeld met integers<br>
 5.0/2=2.5
 
-Met integers kan ook een restdeling worden uitgevoerd (modulo deling). Vb:</br>
+Met integers kan ook een restdeling worden uitgevoerd (modulo deling). Vb:<br>
 11%4 = 11 mod 4 = 3
 
 Hiermee kunnen we de coördinaten van een LED x, y bepalen uit een groter getal:
@@ -1135,12 +1135,15 @@ Door een analoog signaal om te zetten in een digitaal signaal benaderen we bijna
 Als we een analoog signaal met een bereik van 0V tot 3,3V willen omzetten naar een 8-bits digitaal signaal, dan zijn er 256 (d.w.z. 2<sup>8</sup>) verschillende uitgangswaarden. Elke trap heeft een breedte van: 
 
 
-$\frac{3,3V}{256}=12,89mV$
+$$\frac{3,3V}{256}=12,89mV$$
 
 met de grootste afwijking is de helft van één stap: 
-${12,89mV\over 2} = 6,45mV$
+$${12,89mV\over 2} = 6,45mV$$
 
-De micro:bit gebruikt een 10 bit ADC, dan zijn er 1024 (d.w.z. 2<sup>10</sup>) verschillende uitgangswaarden. Elke trap heeft een breedte van: ${3,3V \over 1024} = 3,22mV$ met de grootste afwijking is de helft van één stap: ${3,22mV \over 2} = 1,611mV$
+De micro:bit gebruikt een 10 bit ADC, dan zijn er 1024 (d.w.z. 2<sup>10</sup>) verschillende uitgangswaarden. Elke trap heeft een breedte van: 
+$${3,3V \over 1024} = 3,22mV$$ 
+met de grootste afwijking is de helft van één stap: 
+$${3,22mV \over 2} = 1,611mV$$
 
 **Sampling frequentie**
 
@@ -1149,7 +1152,8 @@ Daarom stelt het Nyquist-bemonsteringscriterium dat de bemonsteringsfrequentie t
 
 ![example image](./images/sampling.png "Het sampelen van een analoog signaal")
 
-De volgende code bezit een sampletijd van 100 milliseconden, dus is de sample frequentie = $$ {1 \over 100ms} = 10Hz $$.
+De volgende code bezit een sampletijd van 100 milliseconden, dus is de sample frequentie = 
+$$ {1 \over 100ms} = 10Hz $$.
 
 ```python
 # Imports go at the top
@@ -1180,13 +1184,13 @@ In volgende figuur wordt de helft van de tijd de uitgang hoog gemaakt en de ande
 Door de frequentie van de blokgolfspanning groot te nemen wordt dit bij het aansturen van verlichting (LED's) door het menselijk oog niet gezien als een knipperende verlichting (door de traagheid van het oog) maar als een gedimde verlichting. Bij DC-motoren zal dit ook niet leiden tot een schokkerig draaien maar als het trager draaien van de motor (door de inertie van de rotor van de motor).
 Men noemt de duty-cycle de verhouding van de aan-tijd (Ton) van het signaal ten opzichte van de volledige tijd van de periode (Ton+Toff), uitgedrukt in procent.
 
-$\delta = {Ton \over T} * 100\%  = 50\%$
+$$\delta = {Ton \over T} * 100\%  = 50\%$$
 
-$\delta = \frac{T_{on}} {T}.100\%$
+$$\delta = \frac{T_{on}} {T}.100\%$$
 
 Als je de duty-cycle vermenigvuldigd met de voedingsspanning dan bekom je de gemiddelde uitgangsspanning.
 
-$Uogem = \delta * Uv  = 3,3V * 50\% = 1,65V $
+$$Uogem = \delta * Uv  = 3,3V * 50\% = 1,65V $$
 
 PWM-besturing wordt gebruikt in een verscheidenheid aan toepassingen, variërend van communicatie tot automatische besturing. Het dimmen van ledverlichting tot het toerental regelen van een DC-motor, … .
 
