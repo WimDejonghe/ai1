@@ -25,7 +25,7 @@ Om een overzicht te houden volgt hier een opsomming van de te nemen stappen:
 <li>beelden classificeren</li>
 <li>NN trainen</li>
 <li>NN downloaden als bestand</li>
-<li>python script schrijven met volgende mogelijkheden: </li>
+<li>python script schrijven met volgend stappenplan: </li>
 <ol>
     <li>NN bestand importeren en gebruiken</li>
     <li>nieuwe webcam beelden kan aanleveren aan NN</li>
@@ -182,7 +182,7 @@ Het is niet nodig om een account te hebben. Sluit venster in het kruisje.
 
 ![example image](./images/ana9d.png "Installer Anaconda")
 
-### Installatie van Tensorflow python bibliotheek
+## Installatie van Tensorflow en OpenCV python bibliotheken
 
 Deze bibliotheek is nodig om het gedownloade NN van Teachable Machine te kunnen verwerken binnen een lokaal python omgeving (environment).
 De installatie gaat als volgt: Klik op de CMD.exe Prompt binnen de Anaconda Navigator:
@@ -191,7 +191,7 @@ De installatie gaat als volgt: Klik op de CMD.exe Prompt binnen de Anaconda Navi
 
 ![example image](./images/ana9f.png "Installer Tensorflow")
 
-Op de prompt typen we de regel:
+Op de prompt typen we de regel gevolgd door Enter:
 
 ```prompt
 conda create -n tf tensorflow
@@ -211,7 +211,7 @@ Type y en druk op Enter
 
 ![example image](./images/ana9l.png "Installer Tensorflow")
 
-Type dan op de prompt: 
+Type dan op de prompt gevolgd door Enter: 
 
 ```prompt
 conda activate tf
@@ -220,7 +220,7 @@ conda activate tf
 
 ![example image](./images/ana9n.png "Installer Tensorflow")
 
-Type dan op de prompt: 
+Type dan op de prompt gevolgd door Enter: 
 
 ```prompt
 pip install opencv-python
