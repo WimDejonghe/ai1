@@ -148,7 +148,7 @@ Ga naar de website van Anaconda en download de installer van Anaconda. Na het do
 
 ![example image](./images/ana1.png "Installer Anaconda")
 
-Volg daarna standaard stappen (§zorg dat je Adminuisrator rechten hebt op de computer!!):
+Volg daarna standaard stappen (§zorg dat je Administrator rechten hebt op de computer!!):
 
 ![example image](./images/ana2.png "Installer Anaconda")
 
@@ -159,6 +159,7 @@ Volg daarna standaard stappen (§zorg dat je Adminuisrator rechten hebt op de co
 ![example image](./images/ana5.png "Installer Anaconda")
 
 ![example image](./images/ana6.png "Installer Anaconda")
+![example image](./images/ana6a.png "Installer Anaconda")
 
 ![example image](./images/ana7.png "Installer Anaconda")
 
@@ -166,56 +167,89 @@ Volg daarna standaard stappen (§zorg dat je Adminuisrator rechten hebt op de co
 
 ![example image](./images/ana9.png "Installer Anaconda")
 
-Reboot de computer
+Sluit de browser
 
-Start Anaconda Navigator
+Laat Anaconda Navigator opstarten
 
-Select Spyder en Launch
+![example image](./images/ana9a.png "Installer Anaconda")
 
-![example image](./images/ana10.png "Installer Anaconda")
+![example image](./images/ana9b.png "Installer Anaconda")
 
-Sluit Spyder en Anaconda volledige af en start de Navigator opnieuw met Administrator rechten!!!
+Kies voor No, don't show again
 
-### Installatie van OpenCV voor Anaconda
+![example image](./images/ana9c.png "Installer Anaconda")
+Het is niet nodig om een account te hebben. Sluit venster in het kruisje.
 
-OpenCV is een Python bibliotheek die het programma in staat stelt om de webcam van de computer te gebruiken. Dit is trouwens nodig om nieuwe beelden te kunnen aanbieden aan het NN.
+![example image](./images/ana9d.png "Installer Anaconda")
 
-Start CMD.exe Prompt binnen Anaconda op:
+### Installatie van Tensorflow python bibliotheek
 
-![example image](./images/ana11.png "Installer Anaconda")
+Deze bibliotheek is nodig om het gedownloade NN van Teachable Machine te kunnen verwerken binnen een lokaal python omgeving (environment).
+De installatie gaat als volgt: Klik op de CMD.exe Prompt binnen de Anaconda Navigator:
 
- En voer het volgende commanda op de prompt uit:
+![example image](./images/ana9e.png "Installer Tensorflow")
 
-```prompt
- conda install -c conda-forge opencv
-```
+![example image](./images/ana9f.png "Installer Tensorflow")
 
- ![example image](./images/ana12.png "Installer Anaconda")
-
- ### Install Tensorflow in Anaconda
-
- Om een Keras model van Tensorflow te kunnen gebruiken moet ook hiervoor een bibliotheek op de computer worden geïnstalleerd. Doe dit ook in de CMD.exe Prompt binnen Anaconda navigator (opnieuw met administrator rechten) :
+Op de prompt typen we de regel:
 
 ```prompt
- conda create -n tf tensorflow
+conda create -n tf tensorflow
 ```
 
-![example image](./images/ana13.png "Installer Anaconda")
+![example image](./images/ana9g.png "Installer Tensorflow")
 
-Bevestig met 'y'
+![example image](./images/ana9h.png "Installer Tensorflow")
 
-![example image](./images/ana14.png "Installer Anaconda")
+![example image](./images/ana9i.png "Installer Tensorflow")
 
-![example image](./images/ana15.png "Installer Anaconda")
+Type y en druk op Enter
 
-Activeer deze bibliotheken met het commando:
+![example image](./images/ana9j.png "Installer Tensorflow")
 
+![example image](./images/ana9k.png "Installer Tensorflow")
+
+![example image](./images/ana9l.png "Installer Tensorflow")
+
+Type dan op de prompt: 
 
 ```prompt
- conda activate tf
+conda activate tf
+```
+![example image](./images/ana9m.png "Installer Tensorflow")
+
+![example image](./images/ana9n.png "Installer Tensorflow")
+
+Type dan op de prompt: 
+
+```prompt
+pip install opencv-python
 ```
 
-![example image](./images/ana16.png "Installer Anaconda")
+![example image](./images/ana9o.png "Installer Tensorflow")
+
+![example image](./images/ana9p.png "Installer Tensorflow")
+
+![example image](./images/ana9q.png "Installer Tensorflow")
+
+Sluit het prompt venster en selecteer in de Anaconda navigator het tf environment:
+
+![example image](./images/ana9r.png "Installer Tensorflow")
+
+Install Spyder onder de tf environment:
+
+![example image](./images/ana9s.png "Installer Spyder")
+
+![example image](./images/ana9t.png "Installer Spyder")
+
+En Launch Spyder na installatie na opnieuw het sluiten van het update venster.
+
+![example image](./images/ana9u.png "Installer Spyder")
+
+![example image](./images/ana9v.png "Installer Spyder")
+
+Sluit venstertje met Tour optie
+
 
 Voila, de computer is klaar om een python script, met daarin het gebruik van een Keras Tensorflow AI Neuraal Netwerk bestand en via Opencv kan het script de webcam gebruiken, te schrijven en te testen.
 
@@ -225,7 +259,9 @@ De werking van OpenCV en het neuraal netwerk kan getest worden adhv volgend scri
 
 Het is hier niet de bedoeling om qua python kennis alles uit de doeken te doen. Een zeer beperkte bespreking van de werking van het script zal hier worden uitgevoerd. Bij verdere interesse in de werking van python en spyder wordt hier verwezen naar aparte opleiding hieromtrent.
 
+:::warning
 Zorg in eerste instantie dat je een aparte map hebt gemaakt op uw computer waar alle bestanden omtrent dit script in zullen worden verzameld. Hierin komt al zeker de twee bestanden die je uit het ZIP bestand hebt gehaald ("labels.txt", "keras_model.h5"). Zorg er ook voor dat het nieuwe aangemaakte py-bestand binnen Spyder ook in die map wordt bewaard.
+:::
 
 Geef het py-bestand een eigen naam en sla op.
 
