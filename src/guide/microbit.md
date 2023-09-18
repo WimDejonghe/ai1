@@ -1135,7 +1135,9 @@ Door een analoog signaal om te zetten in een digitaal signaal benaderen we bijna
 Als we een analoog signaal met een bereik van 0V tot 3,3V willen omzetten naar een 8-bits digitaal signaal, dan zijn er 256 (d.w.z. 2<sup>8</sup>) verschillende uitgangswaarden. Elke trap heeft een breedte van: 
 
 
-$$\frac{3,3V}{256}=12,89mV$$
+$$
+\frac{3,3V}{256}=12,89mV
+$$
 
 met de grootste afwijking is de helft van één stap: 
 $${12,89mV\over 2} = 6,45mV$$
