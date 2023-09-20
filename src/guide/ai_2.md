@@ -232,6 +232,16 @@ pip install opencv-python
 
 ![example image](./images/ana9q.png "Installer Tensorflow")
 
+Installeer nu nog eens volgende bibliotheek. Deze is nodig om later een communicatie te leggen met de microprocessor (verbonden met een USB kabel aan de computer)
+
+```prompt
+conda install -c anaconda pyserial
+```
+
+Bevestig tussendoor met een y.
+
+***
+
 Sluit het prompt venster en selecteer in de Anaconda navigator het tf environment:
 
 ![example image](./images/ana9r.png "Installer Tensorflow")
