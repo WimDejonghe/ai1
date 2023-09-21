@@ -281,7 +281,6 @@ import numpy as np
 import cv2  # Bibliotheek om webcam te gebruiken
 from keras.models import load_model # Bibliotheek om NN-bestand te gebruiken
 
-
 cap = cv2.VideoCapture(0)  #Variabele om webcam beeld in op te slaan
 
 model = load_model('keras_model.h5') #Variabele waarin NN-bestand wordt gelezen
@@ -299,9 +298,7 @@ while True:
         predicted_class=np.argmax(prediction[0], axis=-1) #variabele laden met klasse (hoogste kans) uit vorige variabele 
         
         print(predicted_class) #printen naar console van klasse met hoogste kans
-        
-            
-        
+   
     if cv2.waitKey(1) & 0xFF == ord('q'): #programma stoppen door q te drukken na selectie webcam venster
         
         break
@@ -383,7 +380,6 @@ import cv2  # Bibliotheek om webcam te gebruiken
 from keras.models import load_model # Bibliotheek om NN-bestand te gebruiken
 
 import serial  # Bibliotheek om communicatie te maken met de Micro:Bit
-
 
 cap = cv2.VideoCapture(0)  #Variabele om webcam beeld in op te slaan
 
