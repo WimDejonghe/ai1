@@ -261,7 +261,7 @@ En Launch Spyder na installatie na opnieuw het sluiten van het update venster.
 Sluit venstertje met Tour optie
 
 
-Voila, de computer is klaar om een python script, met daarin het gebruik van een Keras Tensorflow AI Neuraal Netwerk bestand en via Opencv kan het script de webcam gebruiken, te schrijven en te testen.
+Voila, de computer is klaar om een python script, met daarin het gebruik van een Keras Tensorflow AI Neuraal Netwerk bestand en via Opencv kan het script de webcam gebruiken, te schrijven en te testen. De bibliotheek PySerial is nodig om verder een communicatie te verzorgen tussen de computer en de Micro:Bit.
 
 ## Python script zonder micro:bit
 
@@ -276,69 +276,44 @@ Zorg in eerste instantie dat je een aparte map hebt gemaakt op uw computer waar 
 Geef het py-bestand een eigen naam en sla op.
 
 ```python
-from keras.models import load_model  # TensorFlow is required for Keras to work
-import cv2  # Install opencv-python
+#Imports
 import numpy as np
+import cv2  # Bibliotheek om webcam te gebruiken
+from keras.models import load_model # Bibliotheek om NN-bestand te gebruiken
 
-# Disable scientific notation for clarity
-np.set_printoptions(suppress=True)
 
-# Load the model
-model = load_model("keras_Model.h5", compile=False)
+cap = cv2.VideoCapture(0)  #Variabele om webcam beeld in op te slaan
 
-# Load the labels
-class_names = open("labels.txt", "r").readlines()
-
-# CAMERA can be 0 or 1 based on default camera of your computer
-camera = cv2.VideoCapture(0)
+model = load_model('keras_model.h5') #Variabele waarin NN-bestand wordt gelezen
 
 while True:
-    # Grab the webcamera's image.
-    ret, image = camera.read()
-    
-    # Necessary to avoid conflict between left and right
-    image = cv2.flip(image,1)
-
-    # Resize the raw image into (224-height,224-width) pixels
-    image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
-
-    # Show the image in a window
-    cv2.imshow("Webcam Image", image)
-
-    # Make the image a numpy array and reshape it to the models input shape.
-    image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
-
-    # Normalize the image array
-    image = (image / 127.5) - 1
-
-    # Predicts the model
-    prediction = model.predict(image)
-    print(prediction)
-    index = np.argmax(prediction)
-    class_name = class_names[index]
-    confidence_score = prediction[0][index]
-
-    # Print prediction and confidence score
-    print("Class:", class_name[2:], end="")
-    print("Confidence Score:", str(np.round(confidence_score * 100))[:-2], "%")
-
-    # Listen to the keyboard for presses.
-    keyboard_input = cv2.waitKey(1)
-
-    # 27 is the ASCII for the ESC key on your keyboard.
-    if keyboard_input == 27:
+    succes, image = cap.read() #beeld opvragen aan Webcam
+    if succes == True:  #indien beeld is verkregen van de webcam
+        
+        cv2.imshow("Frame",image) #Toon het beeld in een venster
+        img=cv2.resize(image,(224,224)) #Beeld wat aanpassen
+        img=np.array(img,dtype=np.float32) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
+        img=np.expand_dims(img, axis=0) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
+        img=img/255 #Beeld data omvormen naar een formaat die NN-bestand kan lezen
+        prediction = model.predict(img) #aangepaste beeld data aanbieden aan NN en opvangen output NN in variabele
+        predicted_class=np.argmax(prediction[0], axis=-1) #variabele laden met klasse (hoogste kans) uit vorige variabele 
+        
+        print(predicted_class) #printen naar console van klasse met hoogste kans
+        
+            
+        
+    if cv2.waitKey(1) & 0xFF == ord('q'): #programma stoppen door q te drukken na selectie webcam venster
+        
         break
-
-camera.release()
+    
+cap.release()
 cv2.destroyAllWindows()
-
 ```
 
-Met dit script, die van Teachable Machine afkomstig is, kan al onmiddelijk worden getest. In de console van spyder, waar printcommando's hun visualisatie hebben, kan het resultaat geïnterpreteerd worden. Onderaan het script kan men zien dat met de toets ESC het script kan stoppen.
+Met dit script, kan al onmiddelijk worden getest. In de console van Spyder, waar printcommando's hun visualisatie hebben, kan het resultaat geïnterpreteerd worden. Onderaan het script kan men zien dat met de toets q het script kan stoppen.
 
-![example image](./images/spyder1.png "Spyder console")
-
-We bemerken, hier in dit voorbeeld, dat er 4 klasses zijn. Het neuraal netwerk geeft voor iedere klasse een waarde (tussen 0 en 1). De eerste klasse krijgt een score van 0,16 de twee 0,79 de derde 0,00 en de vierde 0,04. Hieruit blijkt dat het neuraal netwerk klasse 2 beschouwt als grootste kanshebber van de nieuwe data. De confidence score voor klasse2 is dus 79%. Het NN denkt voor 79% zekerheidskans dat het nieuwe beeld tot klasse2 behoort. Het NN geeft dus patronen herkent die voor 79% overeen komt met getrainde patronen voor klasse2. De naam van die klasse kan gehaald worden uit labels.txt (hier dus blijkbaar "Left").
+***
+We bemerken, hier in dit voorbeeld, dat er 3 klasses zijn. De klasse met de hoogste waarschijnlijkheid wordt geselecteerd en wordt in de variabele "predicted_class" weggeschreven.
 
 
 ## Python script met micro:bit
@@ -349,103 +324,11 @@ Om dit te kunnen doen moeten we de COM-poort nummer kennen waarmee de micro:bit 
 
 Dit kan je controleren via het Configuratie scherm van de computer. (Hardware en geluiden => Apparaatbeheer => Poorten (COM&LPT)).
 
-In volgend voorbeeld is de micro:bit verbonden via COM15.
+In volgend voorbeelden is de micro:bit verbonden via COM5.
 
-Het python script ziet er dan als volgt uit:
+### Micro:Bit code
 
-
-```python
-# Import necessary modules
-import numpy as np
-import cv2
-#from time import sleep
-import tensorflow.keras
-from keras.preprocessing import image
-#import tensorflow as tf
-#import pyautogui
-import serial
-
-teller = 0
-predicted_class_old = 0
-
-# Using laptop's webcam as source of video
-cap = cv2.VideoCapture(0)
-
-# Labels - The various possibilities
-labels = ['niets','Up','Down']
-
-# Loading the model weigths
-model = tensorflow.keras.models.load_model('keras_model.h5')
-ser = serial.Serial('COM15', baudrate=115200)
-#s = ser.read(100)       # read up to one hundred bytes
-                     # or as much is in the buffer
-#ser.open()
-
-
-while True:	
-    success, image = cap.read()
-    if success == True:
-		# Necessary to avoid conflict between left and right
-        image = cv2.flip(image,1)
-        
-        cv2.imshow("Frame",image)
-
-		# The model takes an image of dimensions (224,224) as input so let's reshape our img to the same.
-        img = cv2.resize(image,(224,224))
-		
-        # Convert the image to a numpy array
-        img = np.array(img,dtype=np.float32)
-		
-        img = np.expand_dims(img,axis=0)
-		
-        # Normalizing
-        img = img/255
-		
-        # Predict the class
-        prediction = model.predict(img)
-		
-        # Map the prediction to a class name
-        predicted_class = np.argmax(prediction[0], axis=-1)
-        predicted_class_name = labels[predicted_class]
-		
-		#print(predicted_class)
-        if teller >= 1:
-            teller = 0
-            print(str(predicted_class))
-            print(type(predicted_class))
-            #tekst = str.encode(predicted_class) + '\n'
-            #ser.write(predicted_class)
-            #ser.write(bytearray('W\r\n','ascii'))
-            if predicted_class == 1:
-                ser.write(bytearray('1\r\n','ascii'))
-            elif predicted_class == 2:
-                ser.write(bytearray('2\r\n','ascii'))
-            else:
-                ser.write(bytearray('0\r\n','ascii'))
-                
-            
-            
-        if predicted_class == predicted_class_old:
-            teller = teller +1
-        else:
-            teller =0
-        predicted_class_old = predicted_class
-       
-
-	# Close all windows if one second has passed and 'q' is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        ser.close()
-        break
-
-# Release open connections
-cap.release()
-cv2.destroyAllWindows()	 
-```
-
-
-## Micro:bit software code
-
-Natuurlijk moet er dan nog op de micro:bit ook code draaien die deze characters kan binnenlezen en op basis daarvan een servomotor kan aansturen (theorie en praktijk, zie gedeelte micro:bit).
+Natuurlijk moet er dan nog op de micro:bit ook code draaien die deze characters kan binnenlezen en op basis daarvan worden specifieke LED's op de ledmatrix van de Micro:Bit aangestuurd. (theorie en praktijk omtrent de Micro:Bit, zie gedeelte micro:bit).
 
 De code ziet er zo uit:
 
@@ -453,28 +336,89 @@ De code ziet er zo uit:
 # Imports go at the top
 from microbit import *
 
-# Servo control: 
-# 50 = ~1 millisecond pulse all right 
-# 75 = ~1.5 millisecond pulse center 
-# 100 = ~2.0 millisecond pulse all left 
-pin0.set_analog_period(20)
-
 while True: 
     name = input()
-    #display.scroll(name)
+    
     if name == '0':
         display.clear()
         display.set_pixel(0,0,9)
-        pin0.write_analog(75)
+        
     if name == '1':
         display.clear()
         display.set_pixel(1,0,9)
-        pin0.write_analog(50)
+        
     if name == '2':
         display.clear()
         display.set_pixel(2,0,9)
-        pin0.write_analog(100)
+        
 ```
+
+Om deze code beter te begrijpen kan er in Spyder op de laptop volgend nieuw python script worden geschreven. Probeer dit te begrijpen:
+
+```python
+import serial  # Bibliotheek om communicatie te maken met de Micro:Bit
+
+ser=serial.Serial('COM5',baudrate=115200) #instellingen voor de communicatie met de Micro:Bit
+
+ser.write(bytearray('0\r\n','ascii')) #stuur een 0 naar de Micro:Bit
+
+ser.close()
+
+```
+
+
+
+### Laptop Python code
+
+Het python script op de computer ziet er dan als volgt uit en is bijna hetzelfde als het vorige script. Enkel zijn er nu commando's bijgekomen die de communicatie verzorgen met de Micro:Bit.
+
+
+```python
+#Imports
+import numpy as np
+import cv2  # Bibliotheek om webcam te gebruiken
+from keras.models import load_model # Bibliotheek om NN-bestand te gebruiken
+
+import serial  # Bibliotheek om communicatie te maken met de Micro:Bit
+
+
+cap = cv2.VideoCapture(0)  #Variabele om webcam beeld in op te slaan
+
+model = load_model('keras_model.h5') #Variabele waarin NN-bestand wordt gelezen
+ser=serial.Serial('COM5',baudrate=115200) #instellingen voor de communicatie met de Micro:Bit
+while True:
+    succes, image = cap.read() #beeld opvragen aan Webcam
+    if succes == True:  #indien beeld is verkregen van de webcam
+        
+        cv2.imshow("Frame",image) #Toon het beeld in een venster
+        img=cv2.resize(image,(224,224)) #Beeld wat aanpassen
+        img=np.array(img,dtype=np.float32) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
+        img=np.expand_dims(img, axis=0) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
+        img=img/255 #Beeld data omvormen naar een formaat die NN-bestand kan lezen
+        prediction = model.predict(img) #aangepaste beeld data aanbieden aan NN en opvangen output NN in variabele
+        predicted_class=np.argmax(prediction[0], axis=-1) #variabele laden met klasse (hoogste kans) uit vorige variabele 
+        
+        print(predicted_class) #printen naar console van klasse met hoogste kans
+        if predicted_class == 0: #is die klasse 0? 
+            ser.write(bytearray('0\r\n','ascii')) #ja, stuur dan een 0 naar de Micro:Bit
+        if predicted_class == 1: #is die klasse 1? 
+            ser.write(bytearray('1\r\n','ascii')) #ja, stuur dan een 1 naar de Micro:Bit
+        if predicted_class == 2: #is die klasse 2? 
+            ser.write(bytearray('2\r\n','ascii')) #ja, stuur dan een 2 naar de Micro:Bit
+            
+        
+    if cv2.waitKey(1) & 0xFF == ord('q'): #programma stoppen door q te drukken na selectie webcam venster
+        ser.close() #sluiten van de verbinding met de Micro:Bit
+        break
+    
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
+
+
+
 
 <hr>
 
