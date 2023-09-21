@@ -320,9 +320,10 @@ We bemerken, hier in dit voorbeeld, dat er 3 klasses zijn. De klasse met de hoog
 
 Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek character door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een '0' of '1' of '2' door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
 
-Om dit te kunnen doen moeten we de COM-poort nummer kennen waarmee de micro:bit is verbonden met de computer. Dit kan telkens anders zijn!!
-
+:::tip
+Om dit te kunnen doen moeten we de **COM-poort nummer** kennen waarmee de micro:bit is verbonden met de computer. Dit kan telkens anders zijn!!
 Dit kan je controleren via het Configuratie scherm van de computer. (Hardware en geluiden => Apparaatbeheer => Poorten (COM&LPT)).
+:::
 
 In volgend voorbeelden is de micro:bit verbonden via COM5.
 
@@ -365,7 +366,9 @@ ser.write(bytearray('0\r\n','ascii')) #stuur een 0 naar de Micro:Bit
 ser.close()
 
 ```
-
+:::tip
+Kijk naar de Micro:Bit. Wat zie je? Welke LED licht op? Pas bovenstaande code aan zodat een andere LED oplicht.
+:::
 
 
 ### Laptop Python code
