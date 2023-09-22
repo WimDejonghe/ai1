@@ -367,10 +367,18 @@ ser.close()
 Kijk naar de Micro:Bit. Wat zie je? Welke LED licht op? Pas bovenstaande code aan zodat een andere LED oplicht.
 :::
 
+:::warning
+Let op het statement ser.close(). Dit is noodzakelijk omdat door het schrijven naar de COM-poort, die poort wordt geopend. Echter kan die slechts éénmaal worden geopend. Indien dit statement er niet zou staan, dan zou het programma de eerste keer werken, maar de volgende keren niet meer omdat de poort nog geopend staat. Oplossing is dan de Micro:Bit te disconnecteren en terug te connecteren via de USB kabel in en uit te trekken.
+:::
+
 
 ### Laptop Python code
 
 Het python script op de computer ziet er dan als volgt uit en is bijna hetzelfde als het vorige script. Enkel zijn er nu commando's bijgekomen die de communicatie verzorgen met de Micro:Bit.
+
+:::warning
+Let op, de manier om dit programma te beëindigen is van groot belang. Sluit het programma steeds af door in het venster met het webcam beeld de toets 'q' in te drukken!!! Hierdoor wordt ook de COM-poort met de Micro:Bit terug gesloten, zodat de volgende uitvoer van het programma de poort terug kan worden geopend, zie ook vorige Warning.
+:::
 
 
 ```python
@@ -423,4 +431,4 @@ cv2.destroyAllWindows()
 
 Voila, dit is de volledige werking van AI Powered STEM
 	
-
+***
