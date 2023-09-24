@@ -182,7 +182,7 @@ Het is niet nodig om een account te hebben. Sluit venster in het kruisje.
 
 ![example image](./images/ana9d.png "Installer Anaconda")
 
-## Installatie van Tensorflow en OpenCV python bibliotheken
+## Installatie van Tensorflow, OpenCV en PySerial python bibliotheken
 
 Deze bibliotheek is nodig om het gedownloade NN van Teachable Machine te kunnen verwerken binnen een lokaal python omgeving (environment).
 De installatie gaat als volgt: Klik op de CMD.exe Prompt binnen de Anaconda Navigator:
@@ -220,6 +220,11 @@ conda activate tf
 
 ![example image](./images/ana9n.png "Installer Tensorflow")
 
+
+:::warning
+Tensorflow heeft nu binnen python een nieuw environment aangemaakt. Alle andere bibliotheken en ook het opstarten van Spyder moet nu binnen dit environment gebeuren. Je ziet nu trouwens dat uw promt niet meer begint met base maar met tf, wat de naam van het environment is.
+:::
+
 Type dan op de prompt gevolgd door Enter: 
 
 ```prompt
@@ -242,7 +247,7 @@ Bevestig tussendoor met een y.
 
 ***
 
-Sluit het prompt venster en selecteer in de Anaconda navigator het tf environment:
+Sluit het prompt venster en selecteer in de Anaconda Navigator het tf environment:
 
 ![example image](./images/ana9r.png "Installer Tensorflow")
 
@@ -328,30 +333,48 @@ In volgend voorbeelden is de micro:bit verbonden via COM5.
 
 Natuurlijk moet er dan nog op de micro:bit ook code draaien die deze characters kan binnenlezen en op basis daarvan worden specifieke LED's op de ledmatrix van de Micro:Bit aangestuurd. (theorie en praktijk omtrent de Micro:Bit, zie gedeelte micro:bit).
 
-De code ziet er zo uit:
+De Micro:Bit code ziet er zo uit:
 
 ```python
 # Imports go at the top
 from microbit import *
 
-while True: 
-    name = input()
-    
-    if name == '0':
-        display.clear()
-        display.set_pixel(0,0,9)
+while True:     #oneindige loop maken
+    name = input()  #een binnengekomen character, via de USB-kabel, opslaan in variabele name
+                    #variabele name is van het type char
+    if name == '0': #is binnengekomen char een 0?
+        display.clear() #ja, dan clear alle leds
+        display.set_pixel(0,0,9)    #en activeer led met coördinaat X=0 en Y=0
         
-    if name == '1':
-        display.clear()
-        display.set_pixel(1,0,9)
+    if name == '1': #is binnengekomen char een 1?
+        display.clear()#ja, dan clear alle leds
+        display.set_pixel(1,0,9)    #en activeer led met coördinaat X=1 en Y=0
         
-    if name == '2':
-        display.clear()
-        display.set_pixel(2,0,9)
+    if name == '2': #is binnengekomen char een 2?
+        display.clear() #ja, dan clear alle leds
+        display.set_pixel(2,0,9)    #en activeer led met coördinaat X=2 en Y=0
         
 ```
 
-Om deze code beter te begrijpen kan er in Spyder op de laptop volgend nieuw python script worden geschreven. Probeer dit te begrijpen:
+Om vorige code beter te begrijpen kunnen we binnen de Micro:Bit Python programmeeromgeving dit al eens testen. Binnen die programmeeromgeving zit namelijk een terminal programma. Dit is eigenlijk een programma die op de laptop draait en kan communiceren via COM-poorten (bidirectioneel). Eenmaal de vorige code gedownload is in de Micro:Bit (dan voert deze het programma onmiddelijk uit), staat de Micro:Bit te wachten tot er een character via de USB kabel binnenkomt. 
+
+Open dan het terminal venster :
+
+![example image](./images/mb_term.png "Terminal venster van Micro:Bit")
+
+Klik nu in het zwarte kader en geef een getal (0, 1 of 2) in via het toetsenbord. Er gebeurt niets tot je op ENTER drukt. Dan zal de respectievelijke LED oplichten. 
+
+:::tip
+Er moet dus een ENTER volgen op een doorgestuurd character!!!
+:::
+
+Nu zal dit getal moeten afkomstig zijn van het NN (predicted_class) via een Spyder python script.
+
+:::warning
+Sluit nu zeker het online programma van Micro:Bit af. Want een COM-poort kan slechts één keer door een programma worden gebruikt!!!
+:::
+
+Om dit al eens te testen binnen Syder zonder het NN kan volgend nieuw python script worden geschreven. Probeer dit te begrijpen:
 
 ```python
 import serial  # Bibliotheek om communicatie te maken met de Micro:Bit
