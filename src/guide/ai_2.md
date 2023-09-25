@@ -14,7 +14,7 @@ Eenmaal we tevreden zijn van het getrainde NN (we zullen het ook testen, wat ook
 
 Om dit te kunnen doen zullen we een beetje moeten programmeren. En python is hiervoor uitstekend geschikt. In dit programma zullen we toelaten dat we nieuwe data kunnen binnenhalen (in ons geval webcam beelden) en dat we die nieuwe data kunnen aanbieden aan het bestand met daarin ons getraind NN. Dit zal dus een output generen volgens de klasses die we in het NN hebben opgenomen. Daaruit zullen we de klasse halen die de hoogste 'confidence score' bezit. 
 
-Ons python programma zal dan ook in staat moeten zijn om te kunnen communiceren met de microcontroller. In ons geval de micro:bit. Het python programma kan dan een unieke waarde doorsturen naar de microcontroller. De microcontroller kan die waarde binnen lezen en interpreteren. Volgens de interpretatie kan de microcontroller dan een actuator aansturen, in ons geval de positie van een servomotor.
+Ons python programma zal dan ook in staat moeten zijn om te kunnen communiceren met de microcontroller. In ons geval de Micro:Bit. Het python programma kan dan een unieke waarde doorsturen naar de microcontroller. De microcontroller kan die waarde binnen lezen en interpreteren. Volgens de interpretatie kan de microcontroller dan een actuator aansturen, in ons geval zullen dit enkele led's zijn op de ledmatrix van de Micro:Bit. Andere actuatoren zijn dan natuurlijk ook mogelijk.
 
 
 ## Stappenplan
@@ -48,9 +48,9 @@ We bespreken in volgende hoofdstukken deze stappen in detail. We gaan hier een v
 Op basis van die beelden (classificaties) willen we de positie van een servo motor aansturen in drie posities: 
 
 <ul>
-<li>klasse1 : positie servo motor uiterst links</li>
-<li>klasse2 : positie servo motor uiterst rechts</li>
-<li>klasse0 : positie servo motor in het midden</li>
+<li>klasse1 : Led2 aan</li>
+<li>klasse2 : Led3 aan</li>
+<li>klasse0 : Led1 aan</li>
 </ul>
 
 <hr>
