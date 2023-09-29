@@ -74,8 +74,8 @@ Binnen een programmeertaal zijn een aantal zaken belangrijk en keren steeds teru
         <li>Getallen zonder komma: integer</li>
         <li>Getallen met komma: float</li>
         <li>Boolean: variabele die maar twee waarden kan bevatten: 1/0 of True/False </li>
-        <li>String: variabele die tekst kan bevatten (groepering van characters) </li>
-        <li>char: variabele die maar 1 character/symbool kan bevatten </li>
+        <li>String: variabele die tekst kan bevatten (groepering van karakters) </li>
+        <li>char: variabele die maar 1 karakter/symbool kan bevatten </li>
     </ul>
   </li>
   <li>Iteraties: herhalingen:
@@ -1281,9 +1281,9 @@ pin0.set_analog_period(20)
 while True: 
 	pin0.write_analog(75)
 	sleep(1000)
-	pin0.write_analog(25)
+	pin0.write_analog(30)
 	sleep(1000)
-	pin0.write_analog(125)
+	pin0.write_analog(120)
 	sleep(1000)
 
 ```
@@ -1293,6 +1293,10 @@ while True:
 <p style="color:lightgreen; margin:10px">Opdracht: Koppel extern een servomotor op een pin van de micro:bit. Regel de positie van de servomotor via een PWM signaal door de waarde van een aangesloten potentiometer in te lezen. Visualiseer met een oscilloscoop het signaal.
 </p>
 </div>
+
+:::warning
+Let op bij vorige oefening. De servo motoren zijn geen precisie motoren. Er kan dus wat gespeeld worden met de extrema waarden!!
+:::
 
 
 <hr>

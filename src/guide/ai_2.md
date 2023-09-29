@@ -320,18 +320,18 @@ We bemerken, hier in dit voorbeeld, dat er 3 klasses zijn. De klasse met de hoog
 
 ## Python script met micro:bit
 
-Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek character door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een '0' of '1' of '2' door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
+Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek karakter door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een '0' of '1' of '2' door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
 
 :::tip
-Om dit te kunnen doen moeten we de **COM-poort nummer** kennen waarmee de micro:bit is verbonden met de computer. Dit kan telkens anders zijn!!
+Om dit te kunnen doen moeten we de **COM-poort nummer** kennen waarmee de Micro:Bit is verbonden met de computer. Dit kan telkens anders zijn!!
 Dit kan je controleren via het Configuratie scherm van de computer. (Hardware en geluiden => Apparaatbeheer => Poorten (COM&LPT)).
 :::
 
-In volgend voorbeelden is de micro:bit verbonden via COM5.
+In volgend voorbeelden is de Micro:Bit verbonden via COM5.
 
 ### Micro:Bit code
 
-Natuurlijk moet er dan nog op de micro:bit ook code draaien die deze characters kan binnenlezen en op basis daarvan worden specifieke LED's op de ledmatrix van de Micro:Bit aangestuurd. (theorie en praktijk omtrent de Micro:Bit, zie gedeelte micro:bit).
+Natuurlijk moet er dan nog op de Micro:Bit ook code draaien die deze karakters kan binnenlezen en op basis daarvan worden specifieke LED's op de ledmatrix van de Micro:Bit aangestuurd. (theorie en praktijk omtrent de Micro:Bit, zie gedeelte micro:bit).
 
 De Micro:Bit code ziet er zo uit:
 
@@ -340,23 +340,24 @@ De Micro:Bit code ziet er zo uit:
 from microbit import *
 
 while True:     #oneindige loop maken
-    name = input()  #een binnengekomen character, via de USB-kabel, opslaan in variabele name
+    print('Nummer(0,1,2)? + Enter:')
+    name = input()  #een binnengekomen karakter, via de USB-kabel, opslaan in variabele name
                     #variabele name is van het type char
     if name == '0': #is binnengekomen char een 0?
         display.clear() #ja, dan clear alle leds
-        display.set_pixel(0,0,9)    #en activeer led met coördinaat X=0 en Y=0
+        display.show(0) #toon 0 op Ledmatrix
         
     if name == '1': #is binnengekomen char een 1?
         display.clear()#ja, dan clear alle leds
-        display.set_pixel(1,0,9)    #en activeer led met coördinaat X=1 en Y=0
+        display.show(1) #toon 1 op Ledmatrix
         
     if name == '2': #is binnengekomen char een 2?
         display.clear() #ja, dan clear alle leds
-        display.set_pixel(2,0,9)    #en activeer led met coördinaat X=2 en Y=0
+        display.show(2) #toon 2 op Ledmatrix
         
 ```
 
-Om vorige code beter te begrijpen kunnen we binnen de Micro:Bit Python programmeeromgeving dit al eens testen. Binnen die programmeeromgeving zit namelijk een terminal programma. Dit is eigenlijk een programma die op de laptop draait en kan communiceren via COM-poorten (bidirectioneel). Eenmaal de vorige code gedownload is in de Micro:Bit (dan voert deze het programma onmiddelijk uit), staat de Micro:Bit te wachten tot er een character via de USB kabel binnenkomt. 
+Om vorige code beter te begrijpen kunnen we binnen de Micro:Bit Python programmeeromgeving dit al eens testen. Binnen die programmeeromgeving zit namelijk een terminal programma. Dit is eigenlijk een programma die op de laptop draait en kan communiceren via COM-poorten (bidirectioneel). Eenmaal de vorige code gedownload is in de Micro:Bit (dan voert deze het programma onmiddelijk uit), staat de Micro:Bit te wachten tot er een karakter via de USB kabel binnenkomt. 
 
 Open dan het terminal venster :
 
@@ -365,7 +366,7 @@ Open dan het terminal venster :
 Klik nu in het zwarte kader en geef een getal (0, 1 of 2) in via het toetsenbord. Er gebeurt niets tot je op ENTER drukt. Dan zal de respectievelijke LED oplichten. 
 
 :::tip
-Er moet dus een ENTER volgen op een doorgestuurd character!!!
+Er moet dus een ENTER volgen op een doorgestuurd karakter!!!
 :::
 
 Nu zal dit getal moeten afkomstig zijn van het NN (predicted_class) via een Spyder python script.
@@ -383,7 +384,7 @@ ser=serial.Serial('COM5',baudrate=115200) #instellingen voor de communicatie met
 
 ser.write(bytearray('0\r\n','ascii')) #stuur een 0 naar de Micro:Bit
 
-ser.close()
+ser.close() #Sluiten van de seriële poort!!!
 
 ```
 :::tip
