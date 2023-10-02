@@ -222,7 +222,7 @@ conda activate tf
 
 
 :::warning
-Tensorflow heeft nu binnen python een nieuw environment aangemaakt. Alle andere bibliotheken en ook het opstarten van Spyder moet nu binnen dit environment gebeuren. Je ziet nu trouwens dat uw promt niet meer begint met base maar met tf, wat de naam van het environment is.
+Tensorflow heeft nu binnen python een nieuw environment aangemaakt. Alle andere bibliotheken en ook het opstarten van Spyder moet nu binnen dit environment gebeuren. Je ziet nu trouwens dat uw prompt niet meer begint met base maar met tf, wat de naam van het environment is.
 :::
 
 Type dan op de prompt gevolgd door Enter: 
