@@ -6,6 +6,12 @@ mathjax:
 
 # Python script zonder micro:bit
 
+![example image](./images/schema.png "Overzicht")
+
+In vorige figuur is een overzicht terug te vinden van de volledige opstelling. Bemerk de onderdelen van de laptop met webcam die beelden aanlevert aan het Neuraal Netwerk. Dit produceert op zijn beurt een output met de classificatie waaruit de hoogste klasse kan worden gehaald. Deze info wordt dan verder doorgestuurd naar de microcontroller die de nodige actuatoren zal aansturen.
+
+***
+
 De werking van OpenCV en het neuraal netwerk kan getest worden adhv volgend script. Start binnen Anaconda Navigator de Spyder IDE op. Spyder is een python editor waarbinnen python code kan worden geschreven.
 
 Het is hier niet de bedoeling om qua python kennis alles uit de doeken te doen. Een zeer beperkte bespreking van de werking van het script zal hier worden uitgevoerd. Bij verdere interesse in de werking van python en spyder wordt hier verwezen naar aparte opleiding hieromtrent.
