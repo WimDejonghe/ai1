@@ -65,7 +65,7 @@ Dit kan je controleren via het Configuratie scherm van de computer. (Hardware en
 
 In volgend voorbeelden is de Micro:Bit verbonden via COM5.
 
-### Micro:Bit code
+## Micro:Bit code
 
 Natuurlijk moet er dan nog op de Micro:Bit ook code draaien die deze karakters kan binnenlezen en op basis daarvan worden specifieke LED's op de ledmatrix van de Micro:Bit aangestuurd. (theorie en praktijk omtrent de Micro:Bit, zie gedeelte micro:bit).
 
@@ -132,7 +132,7 @@ Let op het statement ser.close(). Dit is noodzakelijk omdat door het schrijven n
 :::
 
 
-### Laptop Python code
+## Laptop Python code
 
 Het python script op de computer ziet er dan als volgt uit en is bijna hetzelfde als het vorige script. Enkel zijn er nu commando's bijgekomen die de communicatie verzorgen met de Micro:Bit.
 
