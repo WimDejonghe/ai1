@@ -117,7 +117,7 @@ Nu zal dit getal moeten afkomstig zijn van het NN (predicted_class) via een Spyd
 Sluit nu zeker het online programma van Micro:Bit af. Want een COM-poort kan slechts één keer door een programma worden gebruikt!!!
 :::
 
-Om dit al eens te testen binnen Syder zonder het NN kan volgend nieuw python script worden geschreven. Probeer dit te begrijpen:
+Om dit al eens te testen binnen Spyder zonder het NN kan volgend nieuw python script worden geschreven. Geef volgend python script een naam en sla op in de map waar ook vorige script is opgeslagen. Kan je volgend script begrijpen? :
 
 :::warning
 Let wel dat je het getal bij COM wijzigt naar het juiste nummer!!!!
