@@ -119,12 +119,17 @@ Sluit nu zeker het online programma van Micro:Bit af. Want een COM-poort kan sle
 
 Om dit al eens te testen binnen Syder zonder het NN kan volgend nieuw python script worden geschreven. Probeer dit te begrijpen:
 
+:::warning
+Let wel dat je het getal bij COM wijzigt naar het juiste nummer!!!!
+:::
+
+
 ```python
 import serial  # Bibliotheek om communicatie te maken met de Micro:Bit
 
 ser=serial.Serial('COM5',baudrate=115200) #instellingen voor de communicatie met de Micro:Bit
 
-ser.write(bytearray('0\r\n','ascii')) #stuur een 0 naar de Micro:Bit
+ser.write(bytearray('0\r\n','ascii')) #stuur een 0 met ENTER naar de Micro:Bit
 
 ser.close() #Sluiten van de seriële poort!!!
 
