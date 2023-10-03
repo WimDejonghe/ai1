@@ -6,23 +6,23 @@ mathjax:
 
 # Python scripts
 
-## Zonder Micro:Bit
+
 
 ![example image](./images/schema.png "Overzicht")
 
 In vorige figuur is een overzicht terug te vinden van de volledige opstelling. Bemerk de onderdelen van de laptop met webcam die beelden aanlevert aan het Neuraal Netwerk. Dit produceert op zijn beurt een output met de classificatie waaruit de hoogste klasse kan worden gehaald. Deze info wordt dan verder doorgestuurd naar de microcontroller die de nodige actuatoren zal aansturen.
 
-***
+## Zonder Micro:Bit
 
-De werking van OpenCV en het neuraal netwerk kan getest worden adhv volgend script. Start binnen Anaconda Navigator de Spyder IDE op. Spyder is een python editor waarbinnen python code kan worden geschreven.
+De werking van OpenCV en het neuraal netwerk (NN) kan getest worden adhv volgend script. Start binnen Anaconda Navigator de Spyder IDE op. Spyder is een python editor waarbinnen python code kan worden geschreven.
 
-Het is hier niet de bedoeling om qua python kennis alles uit de doeken te doen. Een zeer beperkte bespreking van de werking van het script zal hier worden uitgevoerd. Bij verdere interesse in de werking van python en spyder wordt hier verwezen naar aparte opleiding hieromtrent.
+Het is hier niet de bedoeling om qua python kennis alles uit de doeken te doen. Een zeer beperkte bespreking van de werking van het script zal hier worden uitgevoerd. Bij verdere interesse in de werking van python en spyder wordt hier verwezen naar aparte opleidingen hieromtrent.
 
 :::warning
-Zorg in eerste instantie dat je een aparte map hebt gemaakt op uw computer waar alle bestanden omtrent dit script in zullen worden verzameld. Hierin komen al zeker de twee bestanden die je uit het ZIP bestand hebt gehaald ("labels.txt", "keras_model.h5"). Zorg er ook voor dat het nieuwe aangemaakte py-bestand binnen Spyder ook in die map wordt bewaard.
+Zorg in eerste instantie dat je een aparte map hebt gemaakt op uw computer waar alle bestanden omtrent dit script in zullen worden verzameld. Hierin komen al zeker de twee bestanden die je uit het ZIP bestand hebt gehaald ("labels.txt", "keras_model.h5"). Zorg er ook voor dat de nieuwe aangemaakte py-bestanden binnen Spyder ook in die map worden bewaard.
 :::
 
-Geef het py-bestand een eigen naam en sla op. Let op, zoals eerder aangegeven, sla dit bestand zeker op in de map waar ook de gedownloade Teachable Machine bestanden zijn opgeslagen. 
+Kopieer volgend script binnen een nieuw py-bestand binnen Spyder. Geef het py-bestand een eigen naam en sla op. Let op, zoals eerder aangegeven, sla dit bestand zeker op in de map waar ook de gedownloade Teachable Machine bestanden zijn opgeslagen. 
 
 ```python
 #Imports
@@ -146,7 +146,7 @@ Let op het statement ser.close(). Dit is noodzakelijk omdat door het schrijven n
 :::
 
 
-## Laptop Python code
+## Laptop python code
 
 Het python script op de computer ziet er dan als volgt uit en is bijna hetzelfde als het vorige script. Enkel zijn er nu commando's bijgekomen die de communicatie verzorgen met de Micro:Bit.
 
