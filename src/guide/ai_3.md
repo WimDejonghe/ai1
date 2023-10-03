@@ -4,7 +4,9 @@ mathjax:
 ---
 
 
-# Python script zonder micro:bit
+# Python scripts
+
+## Zonder Micro:Bit
 
 ![example image](./images/schema.png "Overzicht")
 
@@ -54,13 +56,13 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-Met dit script, kan al onmiddelijk worden getest. In de console van Spyder, waar printcommando's hun visualisatie hebben, kan het resultaat geïnterpreteerd worden. Onderaan het script kan men zien dat met de toets q het script kan stoppen.
+Met dit script, kan al onmiddelijk worden getest. In de console van Spyder, waar printcommando's hun visualisatie hebben, kan het resultaat geïnterpreteerd worden. Onderaan het script kan men zien dat met de toets q het script kan gestopt worden.
 
 ***
-We bemerken, hier in dit voorbeeld, dat er 3 klasses zijn. De klasse met de hoogste waarschijnlijkheid wordt geselecteerd en wordt in de variabele "predicted_class" weggeschreven.
+We bemerken, hier in dit voorbeeld, dat er een aantal klasses zijn. De klasse met de hoogste waarschijnlijkheid wordt geselecteerd en wordt in de variabele "predicted_class" weggeschreven.
 
 
-## Python script met micro:bit
+## Met Micro:Bit
 
 Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek karakter door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een '0' of '1' of '2' door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
 
@@ -71,7 +73,7 @@ Dit kan je controleren via het Configuratie scherm van de computer. (Hardware en
 
 In volgend voorbeelden is de Micro:Bit verbonden via COM5.
 
-## Micro:Bit code
+## Micro:Bit python code
 
 Natuurlijk moet er dan nog op de Micro:Bit ook code draaien die deze karakters kan binnenlezen en op basis daarvan worden specifieke LED's op de ledmatrix van de Micro:Bit aangestuurd. (theorie en praktijk omtrent de Micro:Bit, zie gedeelte micro:bit).
 
@@ -99,13 +101,13 @@ while True:     #oneindige loop maken
         
 ```
 
-Om vorige code beter te begrijpen kunnen we binnen de Micro:Bit Python programmeeromgeving dit al eens testen. Binnen die programmeeromgeving zit namelijk een terminal programma. Dit is eigenlijk een programma die op de laptop draait en kan communiceren via COM-poorten (bidirectioneel). Eenmaal de vorige code gedownload is in de Micro:Bit (dan voert deze het programma onmiddelijk uit), staat de Micro:Bit te wachten tot er een karakter via de USB kabel binnenkomt. 
+Om vorige code beter te begrijpen kunnen we binnen de Micro:Bit Python programmeeromgeving dit al eens testen. Binnen die programmeeromgeving zit namelijk een **terminal programma**. Dit is een programma die op de laptop draait en kan communiceren via COM-poorten (bidirectioneel). Eenmaal de vorige code gedownload is in de Micro:Bit (dan voert deze het programma onmiddelijk uit), staat de Micro:Bit te wachten tot er een karakter via de USB kabel binnenkomt (hier afkomstig van dit terminal programma, later afkomstig van het python script die de verwerking van het NN verzorgt). 
 
 Open dan het terminal venster :
 
 ![example image](./images/mb_term.png "Terminal venster van Micro:Bit")
 
-Klik nu in het zwarte kader en geef een getal (0, 1 of 2) in via het toetsenbord. Er gebeurt niets tot je op ENTER drukt. Dan zal de respectievelijke LED oplichten. 
+Klik nu in het zwarte kader en geef een getal (0, 1 of 2) in via het toetsenbord. Er gebeurt niets tot je op ENTER drukt. Dan zullen de respectievelijke LED's oplichten. 
 
 :::tip
 Er moet dus een ENTER volgen op een doorgestuurd karakter!!!
@@ -135,7 +137,8 @@ ser.close() #Sluiten van de seriële poort!!!
 
 ```
 :::tip
-Kijk naar de Micro:Bit. Wat zie je? Welke LED licht op? Pas bovenstaande code aan zodat een andere LED oplicht.
+Kijk naar de Micro:Bit. Wat zie je? Welke LED licht op? Pas bovenstaande code aan zodat een andere LED oplicht.<br>
+**\r\n** is de python ascii code voor een ENTER-toets.
 :::
 
 :::warning
