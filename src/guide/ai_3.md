@@ -40,15 +40,15 @@ while True:
         
         cv2.imshow("Frame",image) #Toon het beeld in een venster
         img=cv2.resize(image,(224,224)) #Beeld wat aanpassen
-        img=np.array(img,dtype=np.float32) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
-        img=np.expand_dims(img, axis=0) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
-        img=img/255 #Beeld data omvormen naar een formaat die NN-bestand kan lezen
-        prediction = model.predict(img) #aangepaste beeld data aanbieden aan NN en opvangen output NN in variabele
-        predicted_class=np.argmax(prediction[0], axis=-1) #variabele laden met klasse (hoogste kans) uit vorige variabele 
+        img=np.array(img,dtype=np.float32) #Beelddata omvormen naar een formaat die NN-bestand kan lezen
+        img=np.expand_dims(img, axis=0) #Beelddata omvormen naar een formaat die NN-bestand kan lezen
+        img=img/255 #Helderheidswaarde van iedere pixel normaliseren naar een waarde tussen 0&1
+        prediction = model.predict(img) #Beelddata aanbieden aan NN en probabiliteitswaarde voor iedere klasse opvangen in variabele
+        predicted_class=np.argmax(prediction[0], axis=-1) #Variabele laden met klasse (hoogste probabiliteit) uit vorige variabele 
         
         print(predicted_class) #printen naar console van klasse met hoogste kans
    
-    if cv2.waitKey(1) & 0xFF == ord('q'): #programma stoppen door q te drukken na selectie webcam venster
+    if cv2.waitKey(1) & 0xFF == ord('q'): #!!!programma stoppen door q te drukken na selectie webcam venster
         
         break
     
@@ -175,9 +175,9 @@ while True:
         img=cv2.resize(image,(224,224)) #Beeld wat aanpassen
         img=np.array(img,dtype=np.float32) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
         img=np.expand_dims(img, axis=0) #Beeld data omvormen naar een formaat die NN-bestand kan lezen
-        img=img/255 #Beeld data omvormen naar een formaat die NN-bestand kan lezen
-        prediction = model.predict(img) #aangepaste beeld data aanbieden aan NN en opvangen output NN in variabele
-        predicted_class=np.argmax(prediction[0], axis=-1) #variabele laden met klasse (hoogste kans) uit vorige variabele 
+        img=img/255 #Helderheidswaarde van iedere pixel normaliseren naar een waarde tussen 0&1
+        prediction = model.predict(img) #Beeld data aanbieden aan NN en probabiliteitswaarde voor iedere klasse opvangen in variabele
+        predicted_class=np.argmax(prediction[0], axis=-1) #Variabele laden met klasse (hoogste probabiliteit) uit vorige variabele 
         
         print(predicted_class) #printen naar console van klasse met hoogste kans
         if predicted_class == 0: #is die klasse 0? 
@@ -188,7 +188,7 @@ while True:
             ser.write(bytearray('2\r\n','ascii')) #ja, stuur dan een 2 naar de Micro:Bit
             
         
-    if cv2.waitKey(1) & 0xFF == ord('q'): #programma stoppen door q te drukken na selectie webcam venster
+    if cv2.waitKey(1) & 0xFF == ord('q'): #!!!programma stoppen door q te drukken na selectie webcam venster
         ser.close() #sluiten van de verbinding met de Micro:Bit
         break
     
