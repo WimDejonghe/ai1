@@ -46,7 +46,7 @@ while True:
         prediction = model.predict(img) #Beelddata aanbieden aan NN en probabiliteitswaarde voor iedere klasse opvangen in variabele
         predicted_class=np.argmax(prediction[0], axis=-1) #Variabele laden met klasse (hoogste probabiliteit) uit vorige variabele 
         
-        print(predicted_class) #printen naar console van klasse met hoogste kans
+        print(predicted_class) #printen naar console van klasse met hoogste probabiliteit
    
     if cv2.waitKey(1) & 0xFF == ord('q'): #!!!programma stoppen door q te drukken na selectie webcam venster
         
@@ -179,7 +179,7 @@ while True:
         prediction = model.predict(img) #Beeld data aanbieden aan NN en probabiliteitswaarde voor iedere klasse opvangen in variabele
         predicted_class=np.argmax(prediction[0], axis=-1) #Variabele laden met klasse (hoogste probabiliteit) uit vorige variabele 
         
-        print(predicted_class) #printen naar console van klasse met hoogste kans
+        print(predicted_class) #printen naar console van klasse met hoogste probabiliteit
         if predicted_class == 0: #is die klasse 0? 
             ser.write(bytearray('0\r\n','ascii')) #ja, stuur dan een 0 naar de Micro:Bit
         if predicted_class == 1: #is die klasse 1? 
@@ -189,7 +189,7 @@ while True:
             
         
     if cv2.waitKey(1) & 0xFF == ord('q'): #!!!programma stoppen door q te drukken na selectie webcam venster
-        ser.close() #sluiten van de verbinding met de Micro:Bit
+        ser.close() #!!!sluiten van de verbinding met de Micro:Bit
         break
     
 cap.release()

@@ -55,6 +55,7 @@ module.exports = {
             'ai',
             'ai_2',
             'ai_3',
+            'ai_4',
           ]
         }
       ],
