@@ -65,6 +65,7 @@ De cursus beoogt als kennismaking van wat een AI systeem kan zijn. De gebruiker 
 
 ## Principe en werking van een AI systeem.
 
+![example image](./images/aicat.jpg "Catalogering bij AI")
 
 Heel envoudig kan een thermostaat, die we thuis gebruiken om na te gaan of de temperatuur in huis niet te hoog of te laag is, en daar een actie aan koppelen door te communiceren met de HVAC installatie, gezien worden als een AI systeem. Het neemt een menselijke waarneming en beslissing over. De data die hiervoor gebruikt wordt is de temperatuur die gemeten wordt in de kamer in vergelijking met de gewenste, ingestelde temperatuur. Eventueel kan rekening gehouden worden met: vorige beslissing (hysteresis), tijdstip, dag van de week, temperatuur buiten, weersvoorspelling, .... 
 
