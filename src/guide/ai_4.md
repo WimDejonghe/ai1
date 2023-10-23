@@ -4,11 +4,10 @@ mathjax:
 ---
 
 
-# SteamLabs
+# Micro:Bit Blokken
 
-Indien de python (Anaconda) omgeving voor de gebruiker te hoog is gegrepen, kan een combinatie Teachable Machine met het aansturen van een Micro:Bit op een andere manier worden uitgerold. 
 
-De procedure wordt hier besproken. Het leerproces binnen Teachable Machine blijft dezelfde. We vatten deze procedure aan net na het leerproces met zijn classificaties binnen Teachable Machine. Na het testen kan het getrainde neuraal netwerk worden gedownload. In plaats van het te downloaden op de lokale computer zullen we hier dit bewaren in de cloud met een toegankelijke link.
+De procedure wordt hier besproken. Het leerproces binnen Teachable Machine is reeds gedaan. We vatten deze procedure aan net na het leerproces met zijn classificaties binnen Teachable Machine. Het getrainde NN zullen we hier bewaren in de cloud met een toegankelijke link.
 Deze link wordt dan verder gebruikt binnen een website die in staat is om nieuwe webcam beelden aan te bieden aan het getrainde neuraal netwerk. En daarbij is de website in staat om de classificatie (output van het neurale netwerk) door te sturen naar een geconnecteerde Micro:Bit.
 
 ## Teachable Machine

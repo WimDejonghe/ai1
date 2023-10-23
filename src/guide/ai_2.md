@@ -15,20 +15,43 @@ Eenmaal het neuraal netwerk getraind is kunnen we dan een nieuw beeld aanbieden 
 
 > Het is dus duidelijk dat we zelf het NN niet zullen bouwen, maar we gebruiken een leeg bestaand NN om met onze specifieke data dit NN te trainen volgens onze toepassing. Wil je een nieuwe toepassing, dan kan je dit opnieuw doen met andere data.
 
-Eenmaal we tevreden zijn van het getrainde NN (we zullen het ook testen, wat ook een belangrijke stap is in het gebruik van AI) gaan we dit volledige NN downloaden als een bestand op onze computer. Aan dit bestand kunnen we dan nieuwe data aanbieden, waarop het NN dan zijn werk zal doen en een output (procentuele classificatie).
+Eenmaal er tevredenheid is van het getrainde NN (we zullen het ook testen, wat ook een belangrijke stap is in het gebruik van AI) gaan we dit volledige NN gebruiken om de Micro:Bit aan te sturen die op zijn beurt een actuator zal aansturen. Dit kan op twee manieren. er wordt een onderscheid gemaakt hoe de gebruiker de Micro:Bit wenst te programmeren. De Micro:bit kan geprogrogrammeerd worden in blokken code of in micro-python. Er kan dus hier voor twee werkwijzen worden gekozen:
 
-Om dit te kunnen doen zullen we een beetje moeten programmeren. En python is hiervoor uitstekend geschikt. In dit programma zullen we toelaten dat we nieuwe data kunnen binnenhalen (in ons geval webcam beelden) en dat we die nieuwe data kunnen aanbieden aan het bestand met daarin ons getraind NN. Dit zal dus een output generen volgens de klasses die we in het NN hebben opgenomen. Daaruit zullen we de klasse halen die de hoogste 'confidence score' bezit. 
+> - Programmeer de Micro:Bit in blokken
+> - Programmeer de Micro:Bit in micro-python
 
-Ons python programma zal dan ook in staat moeten zijn om te kunnen communiceren met de microcontroller. In ons geval de Micro:Bit. Het python programma kan dan een unieke waarde doorsturen naar de microcontroller. De microcontroller kan die waarde binnen lezen en interpreteren. Volgens de interpretatie kan de microcontroller dan een actuator aansturen, in ons geval zullen dit enkele led's zijn op de ledmatrix van de Micro:Bit. Andere actuatoren zijn dan natuurlijk ook mogelijk.
 
+## Stappenplan Micro:Bit in blokken
 
-## Stappenplan
+Het NN wordt in de cloud als weblink bewaard. Een speciaal ontwikkelde website kan webcambeelden doorsturen naar het NN en het resultaat ervan doorsturen naar de Micro:Bit. Het enige wat hier aan programmatie moet gebeuren is de Micro:Bit in blokken voorzien van de juiste code om de classificaties te lezen en een actuator aansturen.
 
 Om een overzicht te houden volgt hier een opsomming van de te nemen stappen:
 <ol>
 <li>beelden verzamelen om het NN te trainen = train data (via webcam)</li>
 <li>beelden classificeren</li>
 <li>NN trainen</li>
+<li>NN testen</li>
+<li>NN in de cloud bewaren en de link ernaartoe kopieren</li>
+<li>Programmeer de Micro:Bit in blokken</li>
+<li>Open de website en maak verbinding met NN</li>
+<li>Maak met de website een verbinding met de Micro:Bit</li>
+<li>Laat de website nieuwe webcam beelden verwerken en de Micro:Bit actuatoren worden aangestuurd</li>
+</ol>
+
+## Stappenplan Micro:Bit in micro-python
+
+Het NN wordt als bestand gedownload op de computer. Aan dit bestand kunnen we dan nieuwe data (via de webcam van de computer) aanbieden, waarop het NN dan zijn werk zal doen en een output (procentuele classificatie).
+
+Om dit te kunnen doen zullen we een beetje moeten programmeren (hiervoor moet er wat software worden geïnstalleerd op de computer). En python is hiervoor uitstekend geschikt. In dit programma zullen we toelaten dat we nieuwe data kunnen binnenhalen (in ons geval webcam beelden) en dat we die nieuwe data kunnen aanbieden aan het bestand met daarin ons getraind NN. Dit zal dus een output generen volgens de klasses die we in het NN hebben opgenomen. Daaruit zullen we de klasse halen die de hoogste 'confidence score' bezit. 
+
+Ons python programma zal dan ook in staat moeten zijn om te kunnen communiceren met de microcontroller. In ons geval de Micro:Bit. Het python programma kan dan een unieke waarde doorsturen naar de microcontroller. De microcontroller kan die waarde binnen lezen en interpreteren. Volgens de interpretatie kan de microcontroller dan een actuator aansturen, in ons geval zullen dit enkele led's zijn op de ledmatrix van de Micro:Bit. Andere actuatoren zijn dan natuurlijk ook mogelijk.
+
+Om een overzicht te houden volgt hier een opsomming van de te nemen stappen:
+<ol>
+<li>beelden verzamelen om het NN te trainen = train data (via webcam)</li>
+<li>beelden classificeren</li>
+<li>NN trainen</li>
+<li>NN testen</li>
 <li>NN downloaden als bestand</li>
 <li>python script schrijven met volgend stappenplan: </li>
 <ol>
@@ -50,7 +73,7 @@ We bespreken in volgende hoofdstukken deze stappen in detail. We gaan hier een v
 <li>klasse0 : beelden zonder zichtbare duim (of iets die niet klasse1 en niet klasse2 is)</li>
 </ul>
 
-Op basis van die beelden (classificaties) willen we de positie van een servo motor aansturen in drie posities: 
+Op basis van die beelden (classificaties) willen we een actuator aansturen op de Micro:Bit (Leds's) 
 
 <ul>
 <li>klasse1 : Led2 aan</li>
@@ -100,176 +123,5 @@ Na het train proces kan er op de website onmidellijk worden getest met nieuwe da
 
 ![example image](./images/tm6.png "Teachable Machine")
 
-Eenmaal dit goed bevonden, kan dit worden opgeslagen in uw Google account. Dit is handig als er achteraf toch nog nieuwe trainingsdata zou moeten bijkomen. Je kan verschillende van die getrainde NN op de website opslaan.
-
-
-## Volledig getraind Neuraal Netwerk downloaden als bestand
-
-Het volledige getraind neuraal netwerk kan nu als bestand worden gedownload. Let wel, niet alle getrainde fotodata is hierin opgeslagen. Wel de herkende patronen die het NN toelaten om er een classificatie van te maken. Vandaar dat dit bestand niet zo groot is als je op eerste zicht zou verwachten.
-
-Klik op Model exporteren
-
-![example image](./images/tm7.png "Teachable Machine")
-
-Er zijn verschillende manieren om van dit NN een bestand te maken. Het Google model die hier gebruikt wordt is een Keras model van Tensorflow. Tensorflow is een Google onderdeel die zich specialiseert in AI. Op de website kunnen we dit NN als een keras model van Tensorflow downloaden. 
-
-Klik hiervoor op het middelste tabblad "Tensorflow" en zet de radiobutton op Keras.
-
-![example image](./images/tm8.png "Teachable Machine")
-
-Klik nu op de knop "Mijn model downloaden". Teachable Machine zal het model converteren naar een Keras model en het inpakken in een ZIP bestand.
-
-![example image](./images/tm9.png "Teachable Machine")
-
-Dit levert een ZIP bestand (converted_keras.zip) op dat je op uw lokale computer kan bewaren en uitpakken.
-
-![example image](./images/tm10.png "Teachable Machine")
-
-In het ZIP bestand zitten twee bestanden:
-
-![example image](./images/tm11.png "Teachable Machine")
-
-Het ene bestand is het NN 'keras_model.h5' bestand. Het volledige getrainde NN zit vervat in dit bestand.
-Het andere bestand "labels.txt" bevat enkel de namen van de klasses.
-
-
-## Python script schrijven
-
-Nu moet er op de lokale computer een Python script wordt geschreven die volgende zaken doet:
-
-<ol>
-    <li>NN bestand importeren en gebruiken</li>
-    <li>nieuwe webcam beelden kan aanleveren aan NN</li>
-    <li>output van NN kan lezen en interpreteren</li>
-    <li>communiceren met een microcontroller</li>
-    <li>output van NN doorsturen naar microcontroller</li>
-</ol>
-
-Hiervoor wordt best gebruik gemaakt van een Python IDE (ontwikkelomgeving). Er wordt hier gebruik gemaakt van Spyder. Dit wordt best geïnstalleerd onder het pakket van Anaconda.
-
-![example image](./images/ana.png "Installer Anaconda")
-
-Ga naar de website van Anaconda en download de installer van Anaconda. Na het downloaden voer de installer uit:
-
-![example image](./images/ana1.png "Installer Anaconda")
-
-Volg daarna standaard stappen (§zorg dat je Administrator rechten hebt op de computer!!):
-
-![example image](./images/ana2.png "Installer Anaconda")
-
-![example image](./images/ana3.png "Installer Anaconda")
-
-![example image](./images/ana4.png "Installer Anaconda")
-
-![example image](./images/ana5.png "Installer Anaconda")
-
-![example image](./images/ana6.png "Installer Anaconda")
-![example image](./images/ana6a.png "Installer Anaconda")
-
-![example image](./images/ana7.png "Installer Anaconda")
-
-![example image](./images/ana8.png "Installer Anaconda")
-
-![example image](./images/ana9.png "Installer Anaconda")
-
-Sluit de browser
-
-Laat Anaconda Navigator opstarten
-
-![example image](./images/ana9a.png "Installer Anaconda")
-
-![example image](./images/ana9b.png "Installer Anaconda")
-
-Kies voor No, don't show again
-
-![example image](./images/ana9c.png "Installer Anaconda")
-Het is niet nodig om een account te hebben. Sluit venster in het kruisje.
-
-![example image](./images/ana9d.png "Installer Anaconda")
-
-## Installatie van Tensorflow, OpenCV en PySerial python bibliotheken
-
-Deze bibliotheek is nodig om het gedownloade NN van Teachable Machine te kunnen verwerken binnen een lokaal python omgeving (environment).
-De installatie gaat als volgt: Klik op de CMD.exe Prompt binnen de Anaconda Navigator:
-
-![example image](./images/ana9e.png "Installer Tensorflow")
-
-![example image](./images/ana9f.png "Installer Tensorflow")
-
-Op de prompt typen we de regel gevolgd door Enter:
-
-```prompt
-conda create -n tf tensorflow
-```
-
-![example image](./images/ana9g.png "Installer Tensorflow")
-
-![example image](./images/ana9h.png "Installer Tensorflow")
-
-![example image](./images/ana9i.png "Installer Tensorflow")
-
-Type y en druk op Enter
-
-![example image](./images/ana9j.png "Installer Tensorflow")
-
-![example image](./images/ana9k.png "Installer Tensorflow")
-
-![example image](./images/ana9l.png "Installer Tensorflow")
-
-Type dan op de prompt gevolgd door Enter: 
-
-```prompt
-conda activate tf
-```
-![example image](./images/ana9m.png "Installer Tensorflow")
-
-![example image](./images/ana9n.png "Installer Tensorflow")
-
-
-:::warning
-Tensorflow heeft nu binnen python een nieuw environment aangemaakt. Alle andere bibliotheken en ook het opstarten van Spyder moet nu binnen dit environment gebeuren. Je ziet nu trouwens dat uw prompt niet meer begint met base maar met tf, wat de naam van het environment is.
-:::
-
-Type dan op de prompt gevolgd door Enter: 
-
-```prompt
-pip install opencv-python
-```
-
-![example image](./images/ana9o.png "Installer Tensorflow")
-
-![example image](./images/ana9p.png "Installer Tensorflow")
-
-![example image](./images/ana9q.png "Installer Tensorflow")
-
-Installeer nu nog eens volgende bibliotheek. Deze is nodig om later een communicatie te leggen met de microprocessor (verbonden met een USB kabel aan de computer)
-
-```prompt
-conda install -c anaconda pyserial
-```
-
-Bevestig tussendoor met een y.
-
-***
-
-Sluit het prompt venster en selecteer in de Anaconda Navigator het tf environment:
-
-![example image](./images/ana9r.png "Installer Tensorflow")
-
-Install Spyder onder de tf environment:
-
-![example image](./images/ana9s.png "Installer Spyder")
-
-![example image](./images/ana9t.png "Installer Spyder")
-
-En Launch Spyder na installatie na opnieuw het sluiten van het update venster.
-
-![example image](./images/ana9u.png "Installer Spyder")
-
-![example image](./images/ana9v.png "Installer Spyder")
-
-Sluit venstertje met Tour optie
-
-
-Voila, de computer is klaar om een python script, met daarin het gebruik van een Keras Tensorflow AI Neuraal Netwerk bestand en via Opencv kan het script de webcam gebruiken, te schrijven en te testen. De bibliotheek PySerial is nodig om verder een communicatie te verzorgen tussen de computer en de Micro:Bit.
+Eenmaal dit goed bevonden, kan dit worden opgeslagen in uw Google account. Dit is handig als er achteraf toch nog nieuwe trainingsdata zou moeten bijkomen. Je kan verschillende van die getrainde NN'n op de website of op uw computer opslaan.
 

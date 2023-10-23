@@ -54,8 +54,8 @@ module.exports = {
             'microbit',
             'ai',
             'ai_2',
-            'ai_3',
             'ai_4',
+            'ai_3',
           ]
         }
       ],

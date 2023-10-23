@@ -4,7 +4,178 @@ mathjax:
 ---
 
 
-# Python scripts
+# Micro:Bit Python
+
+## Volledig getraind Neuraal Netwerk downloaden als bestand
+
+Het volledige getraind neuraal netwerk kan nu als bestand worden gedownload. Let wel, niet alle getrainde fotodata is hierin opgeslagen. Wel de herkende patronen die het NN toelaten om er een classificatie van te maken. Vandaar dat dit bestand niet zo groot is als je op eerste zicht zou verwachten.
+
+Klik op Model exporteren
+
+![example image](./images/tm7.png "Teachable Machine")
+
+Er zijn verschillende manieren om van dit NN een bestand te maken. Het Google model die hier gebruikt wordt is een Keras model van Tensorflow. Tensorflow is een Google onderdeel die zich specialiseert in AI. Op de website kunnen we dit NN als een keras model van Tensorflow downloaden. 
+
+Klik hiervoor op het middelste tabblad "Tensorflow" en zet de radiobutton op Keras.
+
+![example image](./images/tm8.png "Teachable Machine")
+
+Klik nu op de knop "Mijn model downloaden". Teachable Machine zal het model converteren naar een Keras model en het inpakken in een ZIP bestand.
+
+![example image](./images/tm9.png "Teachable Machine")
+
+Dit levert een ZIP bestand (converted_keras.zip) op dat je op uw lokale computer kan bewaren en uitpakken.
+
+![example image](./images/tm10.png "Teachable Machine")
+
+In het ZIP bestand zitten twee bestanden:
+
+![example image](./images/tm11.png "Teachable Machine")
+
+Het ene bestand is het NN 'keras_model.h5' bestand. Het volledige getrainde NN zit vervat in dit bestand.
+Het andere bestand "labels.txt" bevat enkel de namen van de klasses.
+
+
+## Python script schrijven
+
+Nu moet er op de lokale computer een Python script wordt geschreven die volgende zaken doet:
+
+<ol>
+    <li>NN bestand importeren en gebruiken</li>
+    <li>nieuwe webcam beelden kan aanleveren aan NN</li>
+    <li>output van NN kan lezen en interpreteren</li>
+    <li>communiceren met een microcontroller</li>
+    <li>output van NN doorsturen naar microcontroller</li>
+</ol>
+
+Hiervoor wordt best gebruik gemaakt van een Python IDE (ontwikkelomgeving). Er wordt hier gebruik gemaakt van Spyder. Dit wordt best geïnstalleerd onder het pakket van Anaconda.
+
+![example image](./images/ana.png "Installer Anaconda")
+
+Ga naar de website van Anaconda en download de installer van Anaconda. Na het downloaden voer de installer uit:
+
+![example image](./images/ana1.png "Installer Anaconda")
+
+Volg daarna standaard stappen (§zorg dat je Administrator rechten hebt op de computer!!):
+
+![example image](./images/ana2.png "Installer Anaconda")
+
+![example image](./images/ana3.png "Installer Anaconda")
+
+![example image](./images/ana4.png "Installer Anaconda")
+
+![example image](./images/ana5.png "Installer Anaconda")
+
+![example image](./images/ana6.png "Installer Anaconda")
+![example image](./images/ana6a.png "Installer Anaconda")
+
+![example image](./images/ana7.png "Installer Anaconda")
+
+![example image](./images/ana8.png "Installer Anaconda")
+
+![example image](./images/ana9.png "Installer Anaconda")
+
+Sluit de browser
+
+Laat Anaconda Navigator opstarten
+
+![example image](./images/ana9a.png "Installer Anaconda")
+
+![example image](./images/ana9b.png "Installer Anaconda")
+
+Kies voor No, don't show again
+
+![example image](./images/ana9c.png "Installer Anaconda")
+Het is niet nodig om een account te hebben. Sluit venster in het kruisje.
+
+![example image](./images/ana9d.png "Installer Anaconda")
+
+## Installatie van Tensorflow, OpenCV en PySerial python bibliotheken
+
+Deze bibliotheek is nodig om het gedownloade NN van Teachable Machine te kunnen verwerken binnen een lokaal python omgeving (environment).
+De installatie gaat als volgt: Klik op de CMD.exe Prompt binnen de Anaconda Navigator:
+
+![example image](./images/ana9e.png "Installer Tensorflow")
+
+![example image](./images/ana9f.png "Installer Tensorflow")
+
+Op de prompt typen we de regel gevolgd door Enter:
+
+```prompt
+conda create -n tf tensorflow
+```
+
+![example image](./images/ana9g.png "Installer Tensorflow")
+
+![example image](./images/ana9h.png "Installer Tensorflow")
+
+![example image](./images/ana9i.png "Installer Tensorflow")
+
+Type y en druk op Enter
+
+![example image](./images/ana9j.png "Installer Tensorflow")
+
+![example image](./images/ana9k.png "Installer Tensorflow")
+
+![example image](./images/ana9l.png "Installer Tensorflow")
+
+Type dan op de prompt gevolgd door Enter: 
+
+```prompt
+conda activate tf
+```
+![example image](./images/ana9m.png "Installer Tensorflow")
+
+![example image](./images/ana9n.png "Installer Tensorflow")
+
+
+:::warning
+Tensorflow heeft nu binnen python een nieuw environment aangemaakt. Alle andere bibliotheken en ook het opstarten van Spyder moet nu binnen dit environment gebeuren. Je ziet nu trouwens dat uw prompt niet meer begint met base maar met tf, wat de naam van het environment is.
+:::
+
+Type dan op de prompt gevolgd door Enter: 
+
+```prompt
+pip install opencv-python
+```
+
+![example image](./images/ana9o.png "Installer Tensorflow")
+
+![example image](./images/ana9p.png "Installer Tensorflow")
+
+![example image](./images/ana9q.png "Installer Tensorflow")
+
+Installeer nu nog eens volgende bibliotheek. Deze is nodig om later een communicatie te leggen met de microprocessor (verbonden met een USB kabel aan de computer)
+
+```prompt
+conda install -c anaconda pyserial
+```
+
+Bevestig tussendoor met een y.
+
+***
+
+Sluit het prompt venster en selecteer in de Anaconda Navigator het tf environment:
+
+![example image](./images/ana9r.png "Installer Tensorflow")
+
+Install Spyder onder de tf environment:
+
+![example image](./images/ana9s.png "Installer Spyder")
+
+![example image](./images/ana9t.png "Installer Spyder")
+
+En Launch Spyder na installatie na opnieuw het sluiten van het update venster.
+
+![example image](./images/ana9u.png "Installer Spyder")
+
+![example image](./images/ana9v.png "Installer Spyder")
+
+Sluit venstertje met Tour optie
+
+
+Voila, de computer is klaar om een python script, met daarin het gebruik van een Keras Tensorflow AI Neuraal Netwerk bestand en via Opencv kan het script de webcam gebruiken, te schrijven en te testen. De bibliotheek PySerial is nodig om verder een communicatie te verzorgen tussen de computer en de Micro:Bit.
+
 
 
 
