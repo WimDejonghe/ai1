@@ -36,7 +36,7 @@ Het ene bestand is het NN 'keras_model.h5' bestand. Het volledige getrainde NN z
 Het andere bestand "labels.txt" bevat enkel de namen van de klasses.
 
 
-## Python environment installatie
+## Installatie Python environment
 
 Nu moet er op de lokale computer een Python script wordt geschreven die volgende zaken doet:
 
@@ -233,7 +233,7 @@ Met dit script, kan al onmiddelijk worden getest. In de console van Spyder, waar
 We bemerken, hier in dit voorbeeld, dat er een aantal klasses zijn. De klasse met de hoogste waarschijnlijkheid wordt geselecteerd en wordt in de variabele "predicted_class" weggeschreven.
 
 
-## Python code op de computer (met Micro:Bit)
+## Python code met Micro:Bit
 
 Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek karakter door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een '0' of '1' of '2' door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
 
@@ -317,7 +317,7 @@ Let op het statement ser.close(). Dit is noodzakelijk omdat door het schrijven n
 :::
 
 
-## Laptop python code
+## Computer python code
 
 Het python script op de computer ziet er dan als volgt uit en is bijna hetzelfde als het vorige script. Enkel zijn er nu commando's bijgekomen die de communicatie verzorgen met de Micro:Bit.
 
