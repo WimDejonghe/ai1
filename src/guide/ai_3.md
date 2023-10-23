@@ -36,7 +36,7 @@ Het ene bestand is het NN 'keras_model.h5' bestand. Het volledige getrainde NN z
 Het andere bestand "labels.txt" bevat enkel de namen van de klasses.
 
 
-## Python script schrijven
+## Python environment installatie
 
 Nu moet er op de lokale computer een Python script wordt geschreven die volgende zaken doet:
 
@@ -183,7 +183,7 @@ Voila, de computer is klaar om een python script, met daarin het gebruik van een
 
 In vorige figuur is een overzicht terug te vinden van de volledige opstelling. Bemerk de onderdelen van de laptop met webcam die beelden aanlevert aan het Neuraal Netwerk. Dit produceert op zijn beurt een output met de classificatie waaruit de hoogste klasse kan worden gehaald. Deze info wordt dan verder doorgestuurd naar de microcontroller die de nodige actuatoren zal aansturen.
 
-## Zonder Micro:Bit
+## Python code op de computer (zonder Micro:Bit)
 
 De werking van OpenCV en het neuraal netwerk (NN) kan getest worden adhv volgend script. Start binnen Anaconda Navigator de Spyder IDE op. Spyder is een python editor waarbinnen python code kan worden geschreven.
 
@@ -233,7 +233,7 @@ Met dit script, kan al onmiddelijk worden getest. In de console van Spyder, waar
 We bemerken, hier in dit voorbeeld, dat er een aantal klasses zijn. De klasse met de hoogste waarschijnlijkheid wordt geselecteerd en wordt in de variabele "predicted_class" weggeschreven.
 
 
-## Met Micro:Bit
+## Python code op de computer (met Micro:Bit)
 
 Eenmaal vorige werkt, kunnen we vanuit het python script na de predict, het resultaat doorsturen naar de micro:bit. Dit doen we door een uniek karakter door te sturen op basis van het predict resultaat van het NN. Afhankelijk van het aantal klasses doen we dit hier met een '0' of '1' of '2' door te sturen naar de micro:bit. Dit doen we via een serieële verbinding via de USB kabel waarmee de micro:bit is verbonden met de computer waarop het NN draait. 
 
@@ -244,7 +244,7 @@ Dit kan je controleren via het Configuratie scherm van de computer. (Hardware en
 
 In volgend voorbeelden is de Micro:Bit verbonden via COM5.
 
-## Micro:Bit python code
+## Micro:Bit micropython code
 
 Natuurlijk moet er dan nog op de Micro:Bit ook code draaien die deze karakters kan binnenlezen en op basis daarvan worden specifieke LED's op de ledmatrix van de Micro:Bit aangestuurd. (theorie en praktijk omtrent de Micro:Bit, zie gedeelte micro:bit).
 

@@ -115,7 +115,7 @@ De gemaakte beelden zijn onmiddelijk in drie klasses gestopt volgens inhoud van 
 
 ![example image](./images/tm4.png "Teachable Machine")
 
-## Neuraal netwerk trainen
+## Neuraal netwerk trainen en testen
 
 ![example image](./images/tm5.png "Teachable Machine")
 

@@ -33,6 +33,7 @@ Kies voor Upload Mijn Model
 
 Als de link ter beschikking is, klik op Kopiëren.
 
+## Code Micro:Bit met blokken
 Open in de browser een nieuw venster en surf naar de programmeeromgeving van Micro:Bit. En programmeer volgende scratch code:
 
 ![example image](./images/SL6.png "Teachable Machine")
@@ -58,4 +59,4 @@ Plak de eerder gekopîeerde link vanuit teachable machine in dit venster.
 
 Daarna zal via de webcam nieuwe beelden worden aangeboden aan het neuraal netwerk die op zijn beurt een communicatie met de Micro:Bit zal verzorgen door de namen van de verschillende classificaties door te sturen naar de Micro:Bit.
 
-Voila, dit zou ook moeten werken.
+Voila, aan de slag ermee.
