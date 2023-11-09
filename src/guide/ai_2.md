@@ -21,6 +21,50 @@ Eenmaal er tevredenheid is van het getrainde NN (we zullen het ook testen, wat o
 > - Programmeer de Micro:Bit in micro-python
 
 
+
+
+## Beelden verzamelen om het NN te trainen = train data (via webcam)
+
+Hiervoor gebruiken we een online platform van Google. Dit platform voorziet lege neurale netwerken die je met uw eigen data kan trainen. Nadien kan je ook testen of uw NN geschikt is voor gebruik. Het platform is 'Teachable Machine' en is te vinden op:
+
+<https://teachablemachine.withgoogle.com/>
+
+![example image](./images/tm0.png "Teachable Machine")
+
+Je hebt hiervoor een Google-account nodig. Log met die account in op 'Teachable Machine'. Nu kan je kiezen wat voor soort train-, test- en verwerk data je wenst te gebruiken. 
+
+Klik op de knop "Aan de slag"
+
+
+
+## Beelden classificeren
+
+De gemaakte beelden zijn onmiddelijk in drie klasses gestopt volgens inhoud van de foto's:
+
+<ul>
+<li>klasse1 : beelden met een duim omhoog</li>
+<li>klasse2 : beelden met een duim omlaag</li>
+<li>klasse0 : beelden zonder zichtbare duim (of iets die niet klasse1 en niet klasse2 is)</li>
+</ul>
+
+![example image](./images/tm1.png "Teachable Machine")
+
+![example image](./images/tm2.png "Teachable Machine")
+
+![example image](./images/tm3.png "Teachable Machine")
+
+![example image](./images/tm4.png "Teachable Machine")
+
+## Neuraal netwerk trainen en testen
+
+![example image](./images/tm5.png "Teachable Machine")
+
+Na het train proces kan er op de website onmidellijk worden getest met nieuwe data (nieuwe beelden). Ga hier na of in alle omstandigheden het neuraal netwerk goed reageert en classificeert. Indien dit niet ok is kan er opnieuw worden getraind met nieuwe / extra data. 
+
+![example image](./images/tm6.png "Teachable Machine")
+
+Eenmaal dit goed bevonden, kan dit worden opgeslagen in uw Google account. Dit is handig als er achteraf toch nog nieuwe trainingsdata zou moeten bijkomen. Je kan verschillende van die getrainde NN'n op de website of op uw computer opslaan.
+
 ## Stappenplan Micro:Bit in blokken
 
 Het NN wordt in de cloud als weblink bewaard. Een speciaal ontwikkelde website kan webcambeelden doorsturen naar het NN en het resultaat ervan doorsturen naar de Micro:Bit. Het enige wat hier aan programmatie moet gebeuren is de Micro:Bit in blokken voorzien van de juiste code om de classificaties te lezen en een actuator aansturen.
@@ -37,6 +81,8 @@ Om een overzicht te houden volgt hier een opsomming van de te nemen stappen:
 <li>Maak met de website een verbinding met de Micro:Bit</li>
 <li>Laat de website nieuwe webcam beelden verwerken en de Micro:Bit actuatoren worden aangestuurd</li>
 </ol>
+
+Hier kan een keuze gemaakt of er verder gewerkt wordt met blokken code of python code.
 
 ## Stappenplan Micro:Bit in micro-python
 
@@ -82,46 +128,3 @@ Op basis van die beelden (classificaties) willen we een actuator aansturen op de
 </ul>
 
 <hr>
-
-## Beelden verzamelen om het NN te trainen = train data (via webcam)
-
-Hiervoor gebruiken we een online platform van Google. Dit platform voorziet lege neurale netwerken die je met uw eigen data kan trainen. Nadien kan je ook testen of uw NN geschikt is voor gebruik. Het platform is 'Teachable Machine' en is te vinden op:
-
-<https://teachablemachine.withgoogle.com/>
-
-![example image](./images/tm0.png "Teachable Machine")
-
-Je hebt hiervoor een Google-account nodig. Log met die account in op 'Teachable Machine'. Nu kan je kiezen wat voor soort train-, test- en verwerk data je wenst te gebruiken. 
-
-Klik op de knop "Aan de slag"
-
-
-
-## Beelden classificeren
-
-De gemaakte beelden zijn onmiddelijk in drie klasses gestopt volgens inhoud van de foto's:
-
-<ul>
-<li>klasse1 : beelden met een duim omhoog</li>
-<li>klasse2 : beelden met een duim omlaag</li>
-<li>klasse0 : beelden zonder zichtbare duim (of iets die niet klasse1 en niet klasse2 is)</li>
-</ul>
-
-![example image](./images/tm1.png "Teachable Machine")
-
-![example image](./images/tm2.png "Teachable Machine")
-
-![example image](./images/tm3.png "Teachable Machine")
-
-![example image](./images/tm4.png "Teachable Machine")
-
-## Neuraal netwerk trainen en testen
-
-![example image](./images/tm5.png "Teachable Machine")
-
-Na het train proces kan er op de website onmidellijk worden getest met nieuwe data (nieuwe beelden). Ga hier na of in alle omstandigheden het neuraal netwerk goed reageert en classificeert. Indien dit niet ok is kan er opnieuw worden getraind met nieuwe / extra data. 
-
-![example image](./images/tm6.png "Teachable Machine")
-
-Eenmaal dit goed bevonden, kan dit worden opgeslagen in uw Google account. Dit is handig als er achteraf toch nog nieuwe trainingsdata zou moeten bijkomen. Je kan verschillende van die getrainde NN'n op de website of op uw computer opslaan.
-
