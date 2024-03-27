@@ -59,4 +59,8 @@ Plak de eerder gekopîeerde link vanuit teachable machine in dit venster.
 
 Daarna zal via de webcam nieuwe beelden worden aangeboden aan het neuraal netwerk die op zijn beurt een communicatie met de Micro:Bit zal verzorgen door de namen van de verschillende classificaties door te sturen naar de Micro:Bit.
 
+:::tip
+Een alternatief voor deze website is : https://ttseng.github.io/micropal/
+:::
+
 Voila, aan de slag ermee.
