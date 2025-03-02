@@ -60,7 +60,10 @@ Plak de eerder gekopîeerde link vanuit teachable machine in dit venster.
 Daarna zal via de webcam nieuwe beelden worden aangeboden aan het neuraal netwerk die op zijn beurt een communicatie met de Micro:Bit zal verzorgen door de namen van de verschillende classificaties door te sturen naar de Micro:Bit.
 
 :::tip
-Een alternatief voor deze website is : https://ttseng.github.io/micropal/
+Een alternatief voor deze website is : [Make AI Robots](https://makeairobots.com) of [MicroBit AI Robots](https://microbitai.inventor.city)
+Let wel: hier kan een event gebruikt worden voor inkomende data via de seriële poort.
 :::
+
+![example image](./images/makeairobot.png "Make AI Robot code")
 
 Voila, aan de slag ermee.
